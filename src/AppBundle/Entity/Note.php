@@ -58,6 +58,18 @@ class Note
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="notes")
+     */
+    private $user;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="notes")
+     */
+    private $categorie;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -186,5 +198,52 @@ class Note
     {
         return $this->dateModification;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Note
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \AppBundle\Entity\Categorie $categorie
+     *
+     * @return Note
+     */
+    public function setCategorie(\AppBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \AppBundle\Entity\Categorie
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+}

@@ -58,6 +58,13 @@ class Categorie
 
 
     /**
+     * @ORM\OneToMany(targetEntity="Note", mappedBy="categorie")
+     */
+    private $notes;
+
+
+
+    /**
      * Get id
      *
      * @return int
@@ -186,5 +193,45 @@ class Categorie
     {
         return $this->categorieParent;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->notes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add note
+     *
+     * @param \AppBundle\Entity\Note $note
+     *
+     * @return Categorie
+     */
+    public function addNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \AppBundle\Entity\Note $note
+     */
+    public function removeNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes->removeElement($note);
+    }
+
+    /**
+     * Get notes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+}

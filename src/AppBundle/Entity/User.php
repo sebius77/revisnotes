@@ -44,6 +44,19 @@ class User
 
 
     /**
+     * @ORM\OneToMany(targetEntity="Note", mappedBy="user")
+     */
+    private $notes;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Parametres", cascade={"persist"})
+     */
+    private $parametres;
+
+
+
+    /**
      * Get id
      *
      * @return int
@@ -124,5 +137,69 @@ class User
     {
         return $this->role;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->notes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add note
+     *
+     * @param \AppBundle\Entity\Note $note
+     *
+     * @return User
+     */
+    public function addNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \AppBundle\Entity\Note $note
+     */
+    public function removeNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes->removeElement($note);
+    }
+
+    /**
+     * Get notes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set parametres
+     *
+     * @param \AppBundle\Entity\Parametres $parametres
+     *
+     * @return User
+     */
+    public function setParametres(\AppBundle\Entity\Parametres $parametres = null)
+    {
+        $this->parametres = $parametres;
+
+        return $this;
+    }
+
+    /**
+     * Get parametres
+     *
+     * @return \AppBundle\Entity\Parametres
+     */
+    public function getParametres()
+    {
+        return $this->parametres;
+    }
+}
