@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6">
+                <ul>
+                    <li>Prenez vos notes</li>
+                    <li>Révisez Régulièrement</li>
+                    <li>N'oubliez plus jamais</li>
+                </ul>
+        </div>
+        <div class="col-md-6">
+            <div id="monCaroussel" class="carousel slide" data-ride="carousel" data-interval="false">
+                <ol class="carousel-indicators">
+                    <li data-target="#monCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#monCarousel" data-slide-to="1"></li>
+                    <li data-target="#monCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="d-block img-fluid" src="{{ asset('images/first.jpg') }}" alt="First">
+                        <div class="carousel-caption">
+                            <h3>Première image</h3>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="d-block img-fluid" src="{{ asset('images/two.jpg') }}" alt="Two">
+                        <div class="carousel-caption">
+                            <h3>Deuxième image</h3>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="d-block img-fluid" src="{{ asset('images/three.jpg') }}" alt="Three">
+                        <div class="carousel-caption">
+                            <h3>Troisième image</h3>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#monCaroussel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#monCaroussel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                <p class="text-center">
+                    Un moment de douleur peut conduire à une vie de gloire. "Film l'invincible"
+                </p>
+                <span class="glyphicon glyphicon-play pull-right"></span>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
