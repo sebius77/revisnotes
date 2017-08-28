@@ -18,7 +18,5 @@
 .idea/modules.xml
 .idea/revisnotes.iml
 .idea/workspace.xml
-app/
 composer.phar
 phpunit.xml.dist
-var/
