@@ -218,4 +218,3 @@ class Parametres
         return $this->parfait;
     }
 }
-

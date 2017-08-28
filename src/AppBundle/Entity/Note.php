@@ -57,11 +57,6 @@ class Note
     private $dateModification;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="notes")
-     */
-    private $user;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="notes")
@@ -199,29 +194,7 @@ class Note
         return $this->dateModification;
     }
 
-    /**
-     * Set user
-     *
-     * @param \AppBundle\Entity\User $user
-     *
-     * @return Note
-     */
-    public function setUser(\AppBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
 
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
     /**
      * Set categorie
@@ -246,4 +219,6 @@ class Note
     {
         return $this->categorie;
     }
+
+
 }
