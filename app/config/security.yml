@@ -1,3 +1,4 @@
+# app/config/security.yml
 
 imports:
     - { resource: "@RNUserBundle/Resources/config/security.yml" }

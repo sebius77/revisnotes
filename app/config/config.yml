@@ -72,9 +72,9 @@ swiftmailer:
     spool: { type: memory }
 
 fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
-    user_class: RN\UserBundle\Entity\User
+    db_driver: orm # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine
+    firewall_name: main # Le nom du firewall derrière lequel on utilisera ces utilisateurs
+    user_class: RN\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
