@@ -6,7 +6,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class RNUserBundle extends Bundle
 {
-    public function getParent()
+    public function getPArent()
     {
         return 'FOSUserBundle';
     }
