@@ -1,6 +1,6 @@
 <?php
 
-namespace RN\UserBundle\Repository;
+namespace Gebs\UserBundle\Repository;
 
 /**
  * UserRepository

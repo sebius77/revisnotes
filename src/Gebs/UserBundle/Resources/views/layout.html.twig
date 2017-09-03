@@ -1,5 +1,6 @@
 {% extends '::base.html.twig' %}
 
+
 {% block body %}
 
 {% if app.request.hasPreviousSession %}
@@ -12,8 +13,8 @@
     {% endfor %}
 {% endif %}
 
-<div>
+
     {% block fos_user_content %}
     {% endblock fos_user_content %}
-</div>
+
 {% endblock %}

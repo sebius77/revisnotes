@@ -1,6 +1,6 @@
 <?php
 
-namespace RN\UserBundle\DependencyInjection;
+namespace Gebs\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
