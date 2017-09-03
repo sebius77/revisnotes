@@ -35,10 +35,10 @@
 
             <ul class="nav navbar-nav">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a class="glyphicon glyphicon-home" href="#">Accueil</a></li>
-                    <li><a class="glyphicon glyphicon-folder-close" href="#">Réviser</a></li>
-                    <li><a class="glyphicon glyphicon-edit" href="#">Ajouter</a></li>
-                    <li><a class="glyphicon glyphicon-search" href="#">Rechercher</a></li>
+                    <li><a class="glyphicon glyphicon-home" href="{{ path('Accueil') }}">Accueil</a></li>
+                    <li><a class="glyphicon glyphicon-folder-close" href="{{ path('AReviser') }}">ARéviser</a></li>
+                    <li><a class="glyphicon glyphicon-edit" href="{{ path('Ajouter') }}">Ajouter</a></li>
+                    <li><a class="glyphicon glyphicon-search">Rechercher</a></li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
