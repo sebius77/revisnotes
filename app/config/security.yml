@@ -1,7 +1,7 @@
 # app/config/security.yml
 
 imports:
-    - { resource: "@RNUserBundle/Resources/config/security.yml" }
+    - { resource: "@GebsUserBundle/Resources/config/security.yml" }
 
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html

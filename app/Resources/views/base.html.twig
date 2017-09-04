@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/form.css') }}">
     {% endblock %}
 </head>
 
@@ -36,10 +35,10 @@
 
             <ul class="nav navbar-nav">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a class="glyphicon glyphicon-home" href="#">Accueil</a></li>
-                    <li><a class="glyphicon glyphicon-folder-close" href="#">Réviser</a></li>
-                    <li><a class="glyphicon glyphicon-edit" href="#">Ajouter</a></li>
-                    <li><a class="glyphicon glyphicon-search" href="#">Rechercher</a></li>
+                    <li><a class="glyphicon glyphicon-home" href="{{ path('Accueil') }}">Accueil</a></li>
+                    <li><a class="glyphicon glyphicon-folder-close" href="{{ path('AReviser') }}">ARéviser</a></li>
+                    <li><a class="glyphicon glyphicon-edit" href="{{ path('Ajouter') }}">Ajouter</a></li>
+                    <li><a class="glyphicon glyphicon-search">Rechercher</a></li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -65,7 +64,7 @@
 
 
 
-<div class="footer text-center">
+<div id="footer" class="text-center">
     <br/>
     <h2>© Sébastien Gaudin</h2>
     <br/>

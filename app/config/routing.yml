@@ -1,7 +1,14 @@
+# app/config/routing.yml
+
 rn_user:
-    resource: "@RNUserBundle/Resources/config/routing.yml"
+    resource: "@GebsUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:
     resource: '@AppBundle/Controller/'
+    type: annotation
+
+
+gebs:
+    resource: '@GebsUserBundle/Controller/'
     type: annotation

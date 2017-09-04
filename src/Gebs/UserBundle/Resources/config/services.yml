@@ -1,4 +1,4 @@
 services:
 #    rn_user.example:
-#        class: RN\UserBundle\Example
+#        class: Gebs\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

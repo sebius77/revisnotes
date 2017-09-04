@@ -9,14 +9,15 @@
 }
 
 #container-bas {
-    margin-bottom: 10%;
+    margin-bottom: 15%;
 }
 
 
-.footer {
-    position: absolute;
-    bottom: 0px;
+#footer {
+    background-color: #3F8C9E;
+    color: #ffffff;
     width: 100%;
-
-    background: #000000;
+    /*position: absolute;
+    bottom: 0;*/
 }
+

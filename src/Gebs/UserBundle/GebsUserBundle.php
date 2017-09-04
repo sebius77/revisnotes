@@ -1,10 +1,10 @@
 <?php
 
-namespace RN\UserBundle;
+namespace Gebs\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class RNUserBundle extends Bundle
+class GebsUserBundle extends Bundle
 {
     public function getPArent()
     {
