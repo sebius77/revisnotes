@@ -3,7 +3,6 @@
 }
 
 #container-haut {
-    margin-top: 5%;
     min-height: 30%;
     margin-bottom: 10%;
 }
@@ -12,12 +11,21 @@
     margin-bottom: 15%;
 }
 
+#container-body {
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
 
 #footer {
+    min-height: 200px;
     background-color: #3F8C9E;
     color: #ffffff;
     width: 100%;
     /*position: absolute;
     bottom: 0;*/
+    padding-top: 20px;
 }
 
+#footer-bas {
+    margin-top: 20px;
+}
