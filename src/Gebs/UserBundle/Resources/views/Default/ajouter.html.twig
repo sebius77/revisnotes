@@ -2,6 +2,24 @@
 
 {% block fos_user_content %}
 
-    Page d'ajout
+   <h2> ajouter une note</h2>
+
+
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+
+{{ form_start(form) }}
+
+    {{ form(form) }}
+
+{{ form_end(form) }}
+
+
 
 {% endblock fos_user_content %}

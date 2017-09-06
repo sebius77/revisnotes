@@ -21,6 +21,8 @@ class Parametres
      */
     private $id;
 
+
+
     /**
      * @var int
      *
@@ -28,12 +30,6 @@ class Parametres
      */
     private $alerte;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="themesTous", type="boolean")
-     */
-    private $themesTous;
 
     /**
      * @var int
@@ -97,30 +93,7 @@ class Parametres
     {
         return $this->alerte;
     }
-
-    /**
-     * Set themesTous
-     *
-     * @param boolean $themesTous
-     *
-     * @return Parametres
-     */
-    public function setThemesTous($themesTous)
-    {
-        $this->themesTous = $themesTous;
-
-        return $this;
-    }
-
-    /**
-     * Get themesTous
-     *
-     * @return bool
-     */
-    public function getThemesTous()
-    {
-        return $this->themesTous;
-    }
+    
 
     /**
      * Set revoir

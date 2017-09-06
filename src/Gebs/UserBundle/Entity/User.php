@@ -23,6 +23,17 @@ class User extends BaseUser
     protected $id;
 
 
+    /**
+     * @var object
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Note", mappedBy="user")
+     */
+    protected $notes;
+
+    /**
+     * @var object
+     * @ORM\OneToOne(targetEntity="\AppBundle\Entity\Parametres", cascade={"persist"})
+     */
+    private $parametres;
 
 
     /**
@@ -36,4 +47,62 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Add note
+     *
+     * @param \AppBundle\Entity\Note $note
+     *
+     * @return User
+     */
+    public function addNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes[] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Remove note
+     *
+     * @param \AppBundle\Entity\Note $note
+     */
+    public function removeNote(\AppBundle\Entity\Note $note)
+    {
+        $this->notes->removeElement($note);
+    }
+
+    /**
+     * Get notes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set parametres
+     *
+     * @param \AppBundle\Entity\Parametres $parametres
+     *
+     * @return User
+     */
+    public function setParametres(\AppBundle\Entity\Parametres $parametres = null)
+    {
+        $this->parametres = $parametres;
+
+        return $this;
+    }
+
+    /**
+     * Get parametres
+     *
+     * @return \AppBundle\Entity\Parametres
+     */
+    public function getParametres()
+    {
+        return $this->parametres;
+    }
 }

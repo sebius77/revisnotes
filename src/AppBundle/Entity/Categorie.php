@@ -52,9 +52,9 @@ class Categorie
     /**
      * @var int
      *
-     * @ORM\Column(name="categorieParent", type="integer", nullable=true)
+     * @ORM\Column(name="idCategorieParent", type="integer", nullable=true)
      */
-    private $categorieParent;
+    private $idCategorieParent;
 
 
     /**
@@ -170,29 +170,7 @@ class Categorie
         return $this->image;
     }
 
-    /**
-     * Set categorieParent
-     *
-     * @param integer $categorieParent
-     *
-     * @return Categorie
-     */
-    public function setCategorieParent($categorieParent)
-    {
-        $this->categorieParent = $categorieParent;
 
-        return $this;
-    }
-
-    /**
-     * Get categorieParent
-     *
-     * @return int
-     */
-    public function getCategorieParent()
-    {
-        return $this->categorieParent;
-    }
     /**
      * Constructor
      */
@@ -233,5 +211,29 @@ class Categorie
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * Set idCategorieParent
+     *
+     * @param integer $idCategorieParent
+     *
+     * @return Categorie
+     */
+    public function setIdCategorieParent($idCategorieParent)
+    {
+        $this->idCategorieParent = $idCategorieParent;
+
+        return $this;
+    }
+
+    /**
+     * Get idCategorieParent
+     *
+     * @return integer
+     */
+    public function getIdCategorieParent()
+    {
+        return $this->idCategorieParent;
     }
 }
