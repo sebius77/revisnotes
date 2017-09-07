@@ -22,10 +22,16 @@ class Note
     private $id;
 
     /**
-     * @var object
+     * @var
      * @ORM\ManyToOne(targetEntity="Gebs\UserBundle\Entity\User", inversedBy="notes")
      */
     protected $user;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="dateRevision", type="datetime")
+     */
+    private $dateRevision;
 
 
     /**
@@ -202,7 +208,6 @@ class Note
     }
 
 
-
     /**
      * Set categorie
      *
@@ -226,7 +231,6 @@ class Note
     {
         return $this->categorie;
     }
-
 
 
 
@@ -258,5 +262,29 @@ class Note
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
+    }
+
+    /**
+     * Set dateRevision
+     *
+     * @param \DateTime $dateRevision
+     *
+     * @return Note
+     */
+    public function setDateRevision($dateRevision)
+    {
+        $this->dateRevision = $dateRevision;
+
+        return $this;
+    }
+
+    /**
+     * Get dateRevision
+     *
+     * @return \DateTime
+     */
+    public function getDateRevision()
+    {
+        return $this->dateRevision;
     }
 }
