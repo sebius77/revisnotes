@@ -262,6 +262,7 @@ class Note
     public function __construct()
     {
         $this->dateCreation = new \DateTime();
+        $this->dateRevision = new \DateTime();
     }
 
     /**

@@ -41,7 +41,10 @@ class GebsController extends Controller
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
+            $user = $this->getUser();
+            $note->setUser($user);
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($note);
             $em->flush();
 

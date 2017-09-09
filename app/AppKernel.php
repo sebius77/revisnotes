@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Gebs\UserBundle\GebsUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
 
         ];
 

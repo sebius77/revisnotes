@@ -2,6 +2,10 @@
     height: 25px;
 }
 
+body {
+    width: 100%;
+}
+
 #container-haut {
     min-height: 30%;
     margin-bottom: 10%;
@@ -12,7 +16,7 @@
 }
 
 #container-body {
-    margin-top: 5%;
+    width: 100%;
     margin-bottom: 10%;
 }
 

@@ -16,7 +16,10 @@
 
 {{ form_start(form) }}
 
-    {{ form(form) }}
+    {{ form_row(form.titre) }}
+   {{ form_row(form.enonce, {'attr': {'class': 'tinymce'}}) }}
+    {{ form_row(form.solution, {'attr': {'class': 'tinymce'}}) }}
+
 
 {{ form_end(form) }}
 
