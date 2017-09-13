@@ -1,6 +1,6 @@
 <?php
 
-namespace Gebs\UserBundle\Controller;
+namespace AppBundle\Controller;
 
 use AppBundle\Entity\Note;
 use AppBundle\Form\NoteType;
@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class GebsController extends Controller
+class PageController extends Controller
 {
     /**
      * @Route("accueil", name="Accueil")
@@ -16,7 +16,7 @@ class GebsController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('GebsUserBundle:Default:accueil.html.twig');
+        return $this->render('AppBundle:Default:accueil.html.twig');
     }
 
 
@@ -26,7 +26,7 @@ class GebsController extends Controller
     public function reviseAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('GebsUserBundle:Default:aReviser.html.twig');
+        return $this->render('AppBundle:Default:aReviser.html.twig');
     }
 
     /**
@@ -55,7 +55,7 @@ class GebsController extends Controller
 
 
         // replace this example code with whatever you need
-        return $this->render('GebsUserBundle:Default:ajouter.html.twig', array(
+        return $this->render('AppBundle:Default:ajouter.html.twig', array(
             'form' => $form->createView(),
         ));
     }
