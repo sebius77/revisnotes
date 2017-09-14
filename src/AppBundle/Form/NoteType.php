@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,8 +21,11 @@ class NoteType extends AbstractType
             ->add('titre',                      TextType::class)
             ->add('enonce',                     TextareaType::class)
             ->add('solution',                   TextareaType::class)
-
-
+            ->add('categorie',                  EntityType::class, array(
+                'class'    => 'AppBundle:Categorie',
+                'choice_label'     => 'nom',
+                'multiple'  => false
+            ))
             ->add('Ajouter',                    SubmitType::class)
             ;
     }

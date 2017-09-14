@@ -91,6 +91,10 @@
             integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/addCategory.js') }}"></script>
+    <script>
+        var Ajouter = '{{ path('Ajouter') }}';
+    </script>
     {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 
 {% endblock %}
