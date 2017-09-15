@@ -16,6 +16,7 @@ $(document).ready(function() {
     // Dans le cas ou l'on clique sur le bouton ajout de catégorie, on affiche le formulaire
     $addCategory.click(function(e) {
         e.preventDefault();
+        $('#containerForm').append($form);
         $form.show();
     });
 
@@ -31,17 +32,21 @@ $(document).ready(function() {
     $('#formCat').submit(function(e) {
         e.preventDefault();
 
-        alert('test');
-        var form = $(this);
+        //alert('test');
+        //var nom = $(this).find("#appbundle_categorie_nom").val();
+        var image = $(this).find('#appbundle_categorie_image').val();
+
+
         $.ajax({
             type: "POST",
-            contentType: 'multipart/form-data; charset=UTF-8',
+            contentType: 'multipart/form-data',
             url: Ajouter,
-            data: form.serialize(),
+            data: image,
             success: function(reponse) {
-                console.log('réussite');
+                console.log(reponse);
             }
         });
+
     });
 
 });

@@ -63,13 +63,15 @@ class PageController extends Controller
         if($request->isXmlHttpRequest()) {
 
 
-
+            //var_dump($_POST);
             //$em = $this->getDoctrine()->getManager();
             //$em->persist($categorie);
             //$em->flush();
+            print_r($_FILES);
 
-            echo '1';
-            //return true;
+            die();
+
+            return true;
         }
 
 

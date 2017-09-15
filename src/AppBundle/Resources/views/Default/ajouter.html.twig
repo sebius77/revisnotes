@@ -24,6 +24,9 @@
                 <a id="addCategory" href="#" title="ajouter une catégorie"
                    class="btn btn-primary glyphicon glyphicon-plus"></a>
             </div>
+        <div id="containerForm" class="col-md-3">
+
+        </div>
 
     </div>
 
@@ -36,7 +39,7 @@
 
     </div>
     <div class="row">
-        <div class="col-md-offset-3 col-md-2">
+        <div class="col-md-offset-3 col-md-3">
             {{ form_row(form.Ajouter) }}
         </div>
 
@@ -44,7 +47,7 @@
 
     {{ form_end(form) }}
 
-    <div id="formCategorie" class="col-md-3">
+    <div id="formCategorie">
         {{ include('AppBundle:Formulaires:formCategorie.html.twig') }}
     </div>
 
