@@ -34,18 +34,20 @@ $(document).ready(function() {
 
         //alert('test');
         //var nom = $(this).find("#appbundle_categorie_nom").val();
-        var image = $(this).find('#appbundle_categorie_image').val();
+        //var image = $(this).find('#appbundle_categorie_image').val();
+        var form = $('#formCat');
+
 
 
         $.ajax({
             type: "POST",
-            contentType: 'multipart/form-data',
             url: Ajouter,
-            data: image,
+            data: new FormData(form),
             success: function(reponse) {
                 console.log(reponse);
             }
         });
+
 
     });
 

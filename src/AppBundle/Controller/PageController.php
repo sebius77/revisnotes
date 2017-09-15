@@ -8,6 +8,7 @@ use AppBundle\Form\CategorieType;
 use AppBundle\Form\NoteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
@@ -40,9 +41,11 @@ class PageController extends Controller
         $note = new Note();
         $form = $this->get('form.factory')->create(NoteType::class, $note);
 
+
         // instanciation de l'objet Categorie
         $categorie = new Categorie();
         $formCategorie = $this->get('form.factory')->create(CategorieType::class);
+
 
         // Lorsque le formulaire est validé
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
@@ -59,21 +62,19 @@ class PageController extends Controller
             return $this->redirectToRoute('Ajouter');
         }
 
+
         // Traitement pour l'ajout des groupes en Ajax
         if($request->isXmlHttpRequest()) {
 
+            $categorie = $request->getContent();
 
-            //var_dump($_POST);
             //$em = $this->getDoctrine()->getManager();
             //$em->persist($categorie);
             //$em->flush();
-            print_r($_FILES);
 
-            die();
 
-            return true;
+                return new JsonResponse(array('message' => $categorie), 200);
         }
-
 
 
         // replace this example code with whatever you need
@@ -83,7 +84,4 @@ class PageController extends Controller
         ));
     }
 
-
 }
-
-
