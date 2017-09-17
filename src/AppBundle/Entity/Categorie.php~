@@ -45,7 +45,7 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="blob", nullable=true)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 

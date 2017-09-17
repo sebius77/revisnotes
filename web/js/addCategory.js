@@ -32,17 +32,27 @@ $(document).ready(function() {
     $('#formCat').submit(function(e) {
         e.preventDefault();
 
-        //alert('test');
+        var formdata = new FormData(this);
+
+
+
+        // Test simple d'affichage du champ nom catégorie
+        //console.log($(this.elements['nom']));
+
+
+        alert('test');
         //var nom = $(this).find("#appbundle_categorie_nom").val();
         //var image = $(this).find('#appbundle_categorie_image').val();
-        var form = $('#formCat');
+        //var form = $('#formCat');
 
 
 
         $.ajax({
             type: "POST",
             url: Ajouter,
-            data: new FormData(form),
+            contentType: false,
+            processData: false,
+            data: formdata,
             success: function(reponse) {
                 console.log(reponse);
             }

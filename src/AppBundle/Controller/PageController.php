@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class PageController extends Controller
 {
@@ -66,14 +68,31 @@ class PageController extends Controller
         // Traitement pour l'ajout des groupes en Ajax
         if($request->isXmlHttpRequest()) {
 
-            $categorie = $request->getContent();
+            $formCategorie->handleRequest($request);
 
-            //$em = $this->getDoctrine()->getManager();
-            //$em->persist($categorie);
-            //$em->flush();
+            //$categorie = $request->getContent();
+            //$categorie = $request->getContentType();
+            /*
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($categorie);
+            $em->flush();
+            */
+            //$nom = $request->request->get('nom');
+            //$elements = $_POST;
 
 
-                return new JsonResponse(array('message' => $categorie), 200);
+            // Pour récupérer la valeur du champ nom des catégories - OK
+            $nom = $formCategorie->get('nom')->getData();
+
+            // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
+            $nomImage = $_FILES['appbundle_categorie']['name'];
+            
+            // On génère un nom unique
+            //$filename = md5(uniqid()).'.'. $extension;
+
+
+
+            return new JsonResponse(array('message' => $nomImage), 200);
         }
 
 
