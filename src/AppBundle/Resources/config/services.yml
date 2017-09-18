@@ -1,0 +1,7 @@
+# src/AppBundle/Resources/config/services.yml
+
+services:
+    file_uploader:
+        class:  AppBundle\Service\FileUploader
+        arguments:
+            $targetDir: '%images_directory%'

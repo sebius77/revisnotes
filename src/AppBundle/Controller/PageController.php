@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 
 class PageController extends Controller
@@ -85,14 +85,17 @@ class PageController extends Controller
             $nom = $formCategorie->get('nom')->getData();
 
             // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
-            $nomImage = $_FILES['appbundle_categorie']['name'];
-            
-            // On génère un nom unique
-            //$filename = md5(uniqid()).'.'. $extension;
+            $file = $_FILES['appbundle_categorie'];
+
+            // On récupère le service pour l'upload de fichier - ok
+            $fileUploader = $this->container->get('file_uploader');
+
+            $filename = $fileUploader->upload($file);
+
+            // Ensuite nous procèderons à l'enregistrement en base de données
 
 
-
-            return new JsonResponse(array('message' => $nomImage), 200);
+            return new JsonResponse(array('message' => $filename, 200));
         }
 
 

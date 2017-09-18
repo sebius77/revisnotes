@@ -55,9 +55,9 @@ $(document).ready(function() {
             data: formdata,
             success: function(reponse) {
                 console.log(reponse);
+
             }
         });
-
 
     });
 
