@@ -70,17 +70,6 @@ class PageController extends Controller
 
             $formCategorie->handleRequest($request);
 
-            //$categorie = $request->getContent();
-            //$categorie = $request->getContentType();
-            /*
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($categorie);
-            $em->flush();
-            */
-            //$nom = $request->request->get('nom');
-            //$elements = $_POST;
-
-
             // Pour récupérer la valeur du champ nom des catégories - OK
             $nom = $formCategorie->get('nom')->getData();
 
@@ -90,12 +79,23 @@ class PageController extends Controller
             // On récupère le service pour l'upload de fichier - ok
             $fileUploader = $this->container->get('file_uploader');
 
-            $filename = $fileUploader->upload($file);
+            // On upload le fichier image
+            $upload = $fileUploader->upload($file);
 
-            // Ensuite nous procèderons à l'enregistrement en base de données
+            // Dans le cas ou l'upload à fonctionner
+            // On enregistre la catégorie en base de données
+            if($upload)
+            {
+                $categorie->setNom($nom);
+                $categorie->setImage($fileUploader->getFileName());
 
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($categorie);
+                $em->flush();
 
-            return new JsonResponse(array('message' => $filename, 200));
+            }
+
+            return new JsonResponse(array('message' => $upload, 200));
         }
 
 

@@ -9,6 +9,7 @@ namespace AppBundle\Service;
 class FileUploader
 {
     private $targetDir;
+    private $filename;
 
     public function __construct($targetDir)
     {
@@ -21,6 +22,8 @@ class FileUploader
 
         // Prévoir des vérifications sur le fichier
         // $file['error']['image'] pour les erreurs
+        // $file['size']['image'] pour la taille du fichier
+        // $file['type']['image'] pour le type du fichier
 
         // On récupère le fichier dans le dossier temporaire
         $tmp_name = $file['tmp_name']['image'];
@@ -32,10 +35,10 @@ class FileUploader
 
 
         // On génère un nom unique pour le fichier et on ajoute son extension
-        $filename = md5(uniqid()).'.'.$extension;
+        $this->setFileName(md5(uniqid()).'.'.$extension);
 
         // On déplace le fichier avec son nouveau nom dans le dossier symfony
-        $upload = move_uploaded_file($tmp_name, $this->getTargetDir() . '/' . $filename);
+        $upload = move_uploaded_file($tmp_name, $this->getTargetDir() . '/' . $this->getFileName());
 
 
         return $upload;
@@ -48,4 +51,16 @@ class FileUploader
     {
         return $this->targetDir;
     }
+
+
+    public function getFileName()
+    {
+        return $this->filename;
+    }
+
+    public function setFileName($filename)
+    {
+        $this->filename = $filename;
+    }
+
 }
