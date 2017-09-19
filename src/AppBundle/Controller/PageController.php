@@ -65,7 +65,7 @@ class PageController extends Controller
         }
 
 
-        // Traitement pour l'ajout des groupes en Ajax
+        // Traitement pour l'ajout des catégories en Ajax
         if($request->isXmlHttpRequest()) {
 
             $formCategorie->handleRequest($request);
@@ -93,6 +93,10 @@ class PageController extends Controller
                 $em->persist($categorie);
                 $em->flush();
 
+
+            } else {
+                // Prévoir un message au cas ou l'upload n'aurait pas fonctionné
+                return new JsonResponse(array('message' => 'false', 400));
             }
 
             return new JsonResponse(array('message' => $upload, 200));
@@ -105,5 +109,37 @@ class PageController extends Controller
             'formCategorie' => $formCategorie->createView(),
         ));
     }
+
+
+    /**
+     * @Route("refreshList", name="refreshList")
+     * Méthode permettant de rafraîchir la liste des catégories
+     */
+    public function refreshListAction(Request $request)
+    {
+        if($request->isXmlHttpRequest()) {
+
+
+            // récupération de toutes les catégories via un repository
+            $repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:Categorie');
+
+            // On récupère toutes les catégories
+            $listCategories = $repository->findAll();
+
+            // Ensuite nous allons parser les catégories via un service
+            // Ceci pour transmettre un tableau des catégories mères et de leurs enfants
+            // Il faudra également prévoir lors de leur suppression, la supression des enfants
+            // et de leurs notes avec une demande de confirmation.
+
+
+            return new JsonResponse(array('listCategories' => $listCategories, 200));
+
+        }
+
+        return new JsonResponse(array('listCategories' => 'erreur', 400));
+
+    }
+
+
 
 }

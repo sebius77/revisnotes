@@ -92,8 +92,10 @@
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/addCategory.js') }}"></script>
+    <script src="{{ asset('js/refreshList.js') }}"></script>
     <script>
         var Ajouter = '{{ path('Ajouter') }}';
+        var refreshList = "{{ path('refreshList') }}";
     </script>
     {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 
