@@ -131,8 +131,15 @@ class PageController extends Controller
             // Il faudra également prévoir lors de leur suppression, la supression des enfants
             // et de leurs notes avec une demande de confirmation.
 
+            // On récupère le service pour parser les catégories
+            $tabCategories = $this->container->get('tab_categories');
 
-            return new JsonResponse(array('listCategories' => $listCategories, 200));
+            // On traite les catégories avec le service
+            $tabTest = $tabCategories->getCategorieWithChildren($listCategories);
+
+
+
+            return new JsonResponse(array('listCategories' => $tabTest, 200));
 
         }
 

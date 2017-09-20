@@ -18,20 +18,15 @@ $(document).ready(function() {
         $.ajax({
             type: "GET",
             url: refreshList,
-            success: function(reponse) {
-               //console.log(reponse.listCategories);
-
+            success: function (reponse) {
                 console.log(reponse);
 
-
+                //var listCategories = reponse.listCategories;
 
 
             }
+
         });
-
-
-
-
     });
 
 

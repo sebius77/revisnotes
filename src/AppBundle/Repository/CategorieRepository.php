@@ -11,5 +11,4 @@ namespace AppBundle\Repository;
 class CategorieRepository extends \Doctrine\ORM\EntityRepository
 {
 
-
 }

@@ -5,3 +5,7 @@ services:
         class:  AppBundle\Service\FileUploader
         arguments:
             $targetDir: '%images_directory%'
+
+
+    tab_categories:
+        class:  AppBundle\Service\TabCategories
