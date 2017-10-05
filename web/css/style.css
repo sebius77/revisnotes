@@ -1,24 +1,51 @@
+/************************
+*      NAVBAR           *
+*                       *
+*************************/
+
 .navbar-brand img {
-    height: 25px;
+    height: 35px;
+    padding-bottom: 5px;
+
 }
+
+.navbar {
+    margin: 0;
+}
+
+.navbar-default {
+    background-color: white;
+
+}
+
+
+/************************
+*    Corps de page      *
+*                       *
+*************************/
+
 
 body {
-    width: 100%;
+    margin-top: 30px;
+    font-family: "Calibri Light";
+    font-size: medium;
+    color: #458DA3;
+
 }
 
-#container-haut {
-    min-height: 30%;
-    margin-bottom: 10%;
-}
 
-#container-bas {
-    margin-bottom: 15%;
-}
 
 #container-body {
     width: 100%;
     margin-bottom: 10%;
+    margin-top: 100px;
 }
+
+
+/************************
+*      FOOTER           *
+*                       *
+*************************/
 
 #footer {
     min-height: 200px;
@@ -34,6 +61,40 @@ body {
     margin-top: 20px;
 }
 
+
+/************************
+*      DIVERS           *
+*                       *
+*************************/
+
 #addCategory {
     margin-top: 26px;
+}
+
+#heading-connexion {
+    background-color: #458DA3;
+    color: white;
+}
+
+#heading-register {
+    background-color: #458DA3;
+    color: white;
+}
+
+
+
+.panel {
+    box-shadow: 8px 8px 0px #75C2D4;
+}
+
+.btn {
+    display: block;
+    width: 150px;
+    margin: auto;
+    padding-bottom: 5px;
+    color: white;
+
+    background-color: #75C2D4;
+    box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
+
 }

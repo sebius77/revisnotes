@@ -11,13 +11,16 @@ class TabCategories
 
     private $tabCategries = [];
 
+    public function __construct()
+    {
+    }
 
-
+    /**
+     * @param $listCategories
+     * @return mixed
+     */
     public function getCategorieWithChildren($listCategories)
     {
-
-        // On créé un tableau de résultat
-        $tabResult = [];
 
         // On créé un tableau de catégories avec pour index leur id
         $categories_id = [];
@@ -28,50 +31,35 @@ class TabCategories
         }
 
         // Ensuite on parse le tableau d'origine
-        foreach($listCategories as $cat) {
+        foreach($listCategories as $index => $cat) {
 
             // Si la catégorie à un id parent, cela signifie qu'elle
             // est enfant d'une catégorie
-            if($cat->getIdCategoriePArent() != null) {
-                $categories_id[$cat->getId()][] = $cat;
+            if($cat->getIdParent() != null) {
+                $categories_id[$cat->getIdParent()]->setChildren($cat);
+                unset($listCategories[$index]);
             }
-
-            $tabResult[] = $categories_id[$cat->getId()];
         }
-
-
-
-        foreach($tabResult as $id => $cat)
-        {
-            $this->setTabCategories([
-                'id' => $id,
-                'nom' => $cat->getNom(),
-                'idCategorieParent' => $cat->getIdCategorieParent(),
-            ]);
-        }
-
-
-        return $this->getTabCategries();
-
+        return $listCategories;
     }
 
 
 
+    /**
+     * @return array
+     */
     public function getTabCategries()
     {
         return $this->tabCategries;
     }
 
 
+    /**
+     * @param $data
+     */
     public function setTabCategories($data)
     {
         $this->tabCategries[]= $data;
     }
-
-
-
-
-
-
 
 }

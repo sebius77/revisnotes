@@ -14,7 +14,7 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                 <div class="login-container">
                     <div class="panel panel-default">
-                        <div class="panel-heading text-center">Connexion</div>
+                        <div id="heading-connexion" class="panel-heading text-center">Connexion</div>
                         <div class="panel-body">
                             <form class="form-group">
                                 <label for="username">{{ 'security.login.username' | trans() }}</label>
@@ -26,7 +26,7 @@
                                 <input type="checkbox" id="remember_me" name="_remember_me"
                                        value="on" />
                                 <label for="remember_me">{{ 'security.login.remember_me' | trans() }}</label>
-                                <input  type="submit" class="login login-submit form-control" id="_submit"
+                                <input  type="submit" class="login login-submit form-control btn" id="_submit"
                                        name="_submit" value="{{ 'security.login.submit' | trans()}}" />
                             </form>
                         </div>

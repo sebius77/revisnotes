@@ -24,7 +24,10 @@ class NoteType extends AbstractType
             ->add('categorie',                  EntityType::class, array(
                 'class'    => 'AppBundle:Categorie',
                 'choice_label'     => 'nom',
-                'multiple'  => false
+                'multiple'  => false,
+                'placeholder' => 'Choisissez une catégorie'
+
+
             ))
             ->add('Ajouter',                    SubmitType::class)
             ;

@@ -52,9 +52,9 @@ class Categorie
     /**
      * @var int
      *
-     * @ORM\Column(name="idCategorieParent", type="integer", nullable=true)
+     * @ORM\Column(name="idParent", type="integer", nullable=true)
      */
-    private $idCategorieParent;
+    private $idParent;
 
 
     /**
@@ -62,6 +62,10 @@ class Categorie
      */
     private $notes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     */
+    private $children;
 
 
     /**
@@ -213,27 +217,77 @@ class Categorie
         return $this->notes;
     }
 
+  
+
     /**
-     * Set idCategorieParent
+     * Set idParent
      *
-     * @param integer $idCategorieParent
+     * @param integer $idParent
      *
      * @return Categorie
      */
-    public function setIdCategorieParent($idCategorieParent)
+    public function setIdParent($idParent)
     {
-        $this->idCategorieParent = $idCategorieParent;
+        $this->idParent = $idParent;
 
         return $this;
     }
 
     /**
-     * Get idCategorieParent
+     * Get idParent
      *
      * @return integer
      */
-    public function getIdCategorieParent()
+    public function getIdParent()
     {
-        return $this->idCategorieParent;
+        return $this->idParent;
     }
+
+    /**
+     * Set children
+     *
+     * @param \AppBundle\Entity\Categorie $children
+     *
+     * @return Categorie
+     */
+    public function setChildren(\AppBundle\Entity\Categorie $children = null)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * Get children
+     *
+     * @return \AppBundle\Entity\Categorie
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+
+    public function to_json_encode()
+    {
+        $tab = [];
+
+        $tab = [
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'idParent' => $this->getIdParent(),
+        ];
+
+
+        if($this->getChildren() != null) {
+            foreach($this->getChildren() as $children)
+            {
+                $tab['children'][]= $children->to_json_encode();
+            }
+        }
+
+        return $tab;
+    }
+
+
 }

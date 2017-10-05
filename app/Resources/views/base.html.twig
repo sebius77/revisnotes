@@ -1,3 +1,5 @@
+{# app/Resources/views/base.html.twig #}
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -18,72 +20,24 @@
 
 <body>
 
-<!-- BARRE DE NAVIGATION -->
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-brand"><img src={{ asset('images/logoSimple.png') }} ></div>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
+<!-- navbar -->
 
-            <ul class="nav navbar-nav">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a class="glyphicon glyphicon-home" href="{{ path('Accueil') }}">Accueil</a></li>
-                    <li><a class="glyphicon glyphicon-folder-close" href="{{ path('AReviser') }}">ARéviser</a></li>
-                    <li><a class="glyphicon glyphicon-edit" href="{{ path('Ajouter') }}">Ajouter</a></li>
-                    <li><a class="glyphicon glyphicon-search">Rechercher</a></li>
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a class="glyphicon glyphicon-cog" title="paramètres" href="#"></a></li>
-                    <li><a class="glyphicon glyphicon-user" title="{{ app.user.username }}" href="#"></a></li>
-                    <li><a class="glyphicon glyphicon-log-out" href="{{ path('fos_user_security_logout') }}">
-                           {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-                {% else %}
-                    <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
-                {% endif %}
+{% include 'default/navbar.html.twig' %}
 
-            </ul>
-        </div>
-    </div>
-</nav>
+<!-- block haut -->
+{% block image %}
+
+{% endblock %}
+
 
 <div id="container-body" class="container-fluid">
     {% block body %}
     {% endblock %}
 </div>
 
+<!-- footer -->
 
-
-<div id="footer" class="text-center">
-    <div class="row">
-        <div class="col-md-3">
-            test 1
-        </div>
-        <div class="col-md-3">
-            test 2
-        </div>
-        <div class="col-md-3">
-            test 3
-        </div>
-        <div class="col-md-3">
-            test 4
-        </div>
-    </div>
-    <div id="footer-bas" class="row">
-        <h3>© Sébastien Gaudin</h3>
-    </div>
-
-</div>
+{% include 'default/footer.html.twig' %}
 
 {% block javascripts %}
     <script
@@ -91,12 +45,13 @@
             integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/addCategory.js') }}"></script>
     <script src="{{ asset('js/refreshList.js') }}"></script>
+    <script src="{{ asset('js/addCategory.js') }}"></script>
     <script>
         var Ajouter = '{{ path('Ajouter') }}';
         var refreshList = "{{ path('refreshList') }}";
     </script>
+
     {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 
 {% endblock %}

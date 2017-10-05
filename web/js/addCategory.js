@@ -54,7 +54,8 @@ $(document).ready(function() {
             processData: false,
             data: formdata,
             success: function(reponse) {
-                console.log(reponse);
+               alert(reponse);
+                refresh();
 
             }
         });
