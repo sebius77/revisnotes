@@ -25,9 +25,9 @@ class User extends BaseUser
 
     /**
      * @var object
-     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Note", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Categorie", mappedBy="user")
      */
-    protected $notes;
+    protected $categories;
 
     /**
      * @var object
@@ -49,36 +49,26 @@ class User extends BaseUser
 
 
     /**
-     * Add note
+     * Set parametres
      *
-     * @param \AppBundle\Entity\Note $note
+     * @param \AppBundle\Entity\Parametres $parametres
      *
      * @return User
      */
-    public function addNote(\AppBundle\Entity\Note $note)
+    public function setParametres(\AppBundle\Entity\Parametres $parametres = null)
     {
-        $this->notes[] = $note;
+        $this->parametres = $parametres;
 
         return $this;
     }
 
     /**
-     * Remove note
+     * Get parametres
      *
-     * @param \AppBundle\Entity\Note $note
+     * @return \AppBundle\Entity\Parametres
      */
-    public function removeNote(\AppBundle\Entity\Note $note)
+    public function getParametres()
     {
-        $this->notes->removeElement($note);
-    }
-
-    /**
-     * Get notes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNotes()
-    {
-        return $this->notes;
+        return $this->parametres;
     }
 }

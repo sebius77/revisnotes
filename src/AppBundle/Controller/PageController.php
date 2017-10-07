@@ -34,6 +34,9 @@ class PageController extends Controller
         return $this->render('AppBundle:Default:aReviser.html.twig');
     }
 
+
+
+
     /**
      * @Route("ajouter", name="Ajouter")
      */
@@ -52,8 +55,11 @@ class PageController extends Controller
         // Lorsque le formulaire est validé
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
-            $user = $this->getUser();
-            $note->setUser($user);
+
+            // En modifiant la base de données l'utilisateur n'est plus directement relié aux note
+            // mais aux catégories. Les lignes qui suivent devront s'appliquer à l'ajout des catégories
+            //$user = $this->getUser();
+            //$note->setUser($user);
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($note);
@@ -109,6 +115,11 @@ class PageController extends Controller
             'formCategorie' => $formCategorie->createView(),
         ));
     }
+
+
+
+
+
 
 
     /**

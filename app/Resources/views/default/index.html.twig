@@ -4,12 +4,64 @@
 
 {% block image %}
     <div id="img-accueil">
-        <img class="img-responsive" src="{{ asset('images/accueilV3.jpg') }}"  alt="image d'accueil">
-
+        <div id="titleHome" class="container">
+            <div class="jumbotron">
+                Une méthode pour réviser
+                <hr><hr><hr>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block body %}
 
+    <div class="container">
+    <div class="row section-home">
+        <div class="col-md-6">
+            <h2>1) Prenez vos notes</h2>
+        </div>
+        <div class="col-md-6">
+            <!-- normal -->
+            <div class="ih-item square effect13 left_to_right"><a href="#">
+                    <div class="img"><img src="{{ asset('images/notes.jpg') }}"></div>
+                    <div class="info">
+                        <h3>Vous voulez apprendre ?</h3>
+                        <p>Ecrivez vos notes avec Revisnotes. Décomposer votre sujet en plusieurs petites fiches.
+                        L'information sera plus simple à retenir.</p>
+                    </div></a></div>
+            <!-- end normal -->
+        </div>
+    </div>
+    <div class="row section-home">
+        <div class="col-md-6">
+            <!-- normal -->
+            <div class="ih-item square effect13 right_to_left"><a href="#">
+                    <div class="img"><img src="{{ asset('images/entrainer.jpg') }}" alt="img"></div>
+                    <div class="info">
+                        <h3>Entraînez-vous  !!</h3>
+                        <p>Revisnotes vous fait revoir les fiches les moins maîtrisées. En répétant souvent, vos gestes deviendront des réflexes.</p>
+                    </div></a></div>
+            <!-- end normal -->
+        </div>
+        <div class="col-md-6">
+            <h2>2) Révisez régulièrement</h2>
+        </div>
+    </div>
+    <div class="row section-home">
+        <div class="col-md-6">
+            <h2>3) L'information vous retiendrez</h2>
+        </div>
+        <div class="col-md-6">
+            <!-- normal -->
+            <div class="ih-item square effect13 left_to_right"><a href="#">
+                    <div class="img"><img src="{{ asset('images/retenir.jpg') }}"></div>
+                    <div class="info">
+                        <h3>Retenez l'information</h3>
+                        <p>En applquant la méthode l'information sera gravée pour longtemps.</p>
+                    </div></a></div>
+            <!-- end normal -->
+        </div>
+    </div>
+    </div>
 
 {% endblock %}

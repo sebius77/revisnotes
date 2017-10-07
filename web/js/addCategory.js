@@ -17,14 +17,16 @@ $(document).ready(function() {
     $addCategory.click(function(e) {
         e.preventDefault();
         $('#containerForm').append($form);
-        $form.show();
+        //$form.show();
+        $form.toggle("slide");
     });
 
 
     // Dans le cas où l'on clique sur le bouton delButton, on cache le formulaire
     $delButton.click(function(e) {
         e.preventDefault();
-        $form.hide();
+        //$form.hide();
+        $form.toggle("slide");
     });
 
 
@@ -54,7 +56,8 @@ $(document).ready(function() {
             processData: false,
             data: formdata,
             success: function(reponse) {
-               alert(reponse);
+               //alert(reponse);
+                $('#catMessage').append('<div class="alert alert-success">La catégorie a été ajoutée avec succès!!</div>');
                 refresh();
 
             }

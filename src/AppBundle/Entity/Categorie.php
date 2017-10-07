@@ -67,6 +67,12 @@ class Categorie
      */
     private $children;
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="Gebs\UserBundle\Entity\User", inversedBy="categories")
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -290,4 +296,28 @@ class Categorie
     }
 
 
+
+    /**
+     * Set user
+     *
+     * @param \Gebs\UserBundle\Entity\User $user
+     *
+     * @return Categorie
+     */
+    public function setUser(\Gebs\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Gebs\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

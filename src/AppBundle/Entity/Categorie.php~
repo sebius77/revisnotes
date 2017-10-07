@@ -67,6 +67,12 @@ class Categorie
      */
     private $children;
 
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="Gebs\UserBundle\Entity\User", inversedBy="categories")
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -242,4 +248,52 @@ class Categorie
     {
         return $this->idParent;
     }
+
+    /**
+     * Set children
+     *
+     * @param \AppBundle\Entity\Categorie $children
+     *
+     * @return Categorie
+     */
+    public function setChildren(\AppBundle\Entity\Categorie $children = null)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * Get children
+     *
+     * @return \AppBundle\Entity\Categorie
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+
+    public function to_json_encode()
+    {
+        $tab = [];
+
+        $tab = [
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'idParent' => $this->getIdParent(),
+        ];
+
+
+        if($this->getChildren() != null) {
+            foreach($this->getChildren() as $children)
+            {
+                $tab['children'][]= $children->to_json_encode();
+            }
+        }
+
+        return $tab;
+    }
+
+
 }

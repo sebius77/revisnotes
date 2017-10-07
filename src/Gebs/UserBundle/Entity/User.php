@@ -25,9 +25,9 @@ class User extends BaseUser
 
     /**
      * @var object
-     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Note", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Categorie", mappedBy="user")
      */
-    protected $notes;
+    protected $categories;
 
     /**
      * @var object
@@ -47,40 +47,6 @@ class User extends BaseUser
     }
 
 
-
-    /**
-     * Add note
-     *
-     * @param \AppBundle\Entity\Note $note
-     *
-     * @return User
-     */
-    public function addNote(\AppBundle\Entity\Note $note)
-    {
-        $this->notes[] = $note;
-
-        return $this;
-    }
-
-    /**
-     * Remove note
-     *
-     * @param \AppBundle\Entity\Note $note
-     */
-    public function removeNote(\AppBundle\Entity\Note $note)
-    {
-        $this->notes->removeElement($note);
-    }
-
-    /**
-     * Get notes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNotes()
-    {
-        return $this->notes;
-    }
 
     /**
      * Set parametres
@@ -104,5 +70,39 @@ class User extends BaseUser
     public function getParametres()
     {
         return $this->parametres;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \AppBundle\Entity\Categorie $category
+     *
+     * @return User
+     */
+    public function addCategory(\AppBundle\Entity\Categorie $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \AppBundle\Entity\Categorie $category
+     */
+    public function removeCategory(\AppBundle\Entity\Categorie $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

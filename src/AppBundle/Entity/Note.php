@@ -21,11 +21,6 @@ class Note
      */
     private $id;
 
-    /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="Gebs\UserBundle\Entity\User", inversedBy="notes")
-     */
-    protected $user;
 
     /**
      * @var \DateTime
@@ -233,30 +228,6 @@ class Note
     }
 
 
-
-    /**
-     * Set user
-     *
-     * @param \Gebs\UserBundle\Entity\User $user
-     *
-     * @return Note
-     */
-    public function setUser(\Gebs\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Gebs\UserBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
 
     public function __construct()

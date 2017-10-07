@@ -21,11 +21,6 @@ class Note
      */
     private $id;
 
-    /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="Gebs\UserBundle\Entity\User", inversedBy="notes")
-     */
-    protected $user;
 
     /**
      * @var \DateTime
@@ -234,33 +229,34 @@ class Note
 
 
 
+
+    public function __construct()
+    {
+        $this->dateCreation = new \DateTime();
+        $this->dateRevision = new \DateTime();
+    }
+
     /**
-     * Set user
+     * Set dateRevision
      *
-     * @param \Gebs\UserBundle\Entity\User $user
+     * @param \DateTime $dateRevision
      *
      * @return Note
      */
-    public function setUser(\Gebs\UserBundle\Entity\User $user = null)
+    public function setDateRevision($dateRevision)
     {
-        $this->user = $user;
+        $this->dateRevision = $dateRevision;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get dateRevision
      *
-     * @return \Gebs\UserBundle\Entity\User
+     * @return \DateTime
      */
-    public function getUser()
+    public function getDateRevision()
     {
-        return $this->user;
-    }
-
-
-    public function __construct()
-    {
-        $this->dateCreation = new \DateTime();
+        return $this->dateRevision;
     }
 }

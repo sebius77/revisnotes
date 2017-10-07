@@ -2,15 +2,18 @@
 
 $(document).ready(function() {
 
+    // On récupère la liste déroulante
+    var $select = $('#appbundle_note_categorie');
 
     refresh();
+
 
     $select.change(function() {
 
         try {
 
             //console.log($select.attr());
-            console.log($(this).val());
+            //console.log($(this).val());
 
            $(this).attr('selected');
             //alert('test');
@@ -18,17 +21,12 @@ $(document).ready(function() {
             alert(err);
         }
 
+         var id = $(this).val();
+         var option = $('option[value='+id+']');
+         var cat = option.text();
 
-        // var id = $(this).val();
-        // var option = $('option[value='+id+']');
-        //var cat = option.text();
+        $('#idMere').html(cat);
 
-        // $('#appbundle_note_categorie option[value="'+id+
-
-
-        //console.log(id);
-        //console.log(cat);
-        //console.log($(this).val());
     });
 
 
