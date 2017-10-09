@@ -82,43 +82,65 @@ class PageController extends Controller
             // Pour récupérer la valeur du champ idParent
             $idParent = $formCategorie->get('idParent')->getData();
 
-            // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
-            $file = $_FILES['appbundle_categorie'];
 
-            // On récupère le service pour l'upload de fichier - ok
-            $fileUploader = $this->container->get('file_uploader');
+            // On test si la catégorie a un idParent
+            if($idParent === null) {
 
-            // On upload le fichier image
-            $upload = $fileUploader->upload($file);
 
-            // Dans le cas ou l'upload à fonctionner
-            // On enregistre la catégorie en base de données
-            if($upload)
-            {
+                // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
+                $file = $_FILES['appbundle_categorie'];
 
+                // On récupère le service pour l'upload de fichier - ok
+                $fileUploader = $this->container->get('file_uploader');
+
+                // On upload le fichier image
+                $upload = $fileUploader->upload($file);
+
+
+                // Dans le cas ou l'upload à fonctionner
+                // On enregistre la catégorie en base de données
+                if ($upload) {
+
+                    // On récupère le level de la catégorie Parent
+                    $levelCategorie = $this->container->get('level_categorie');
+
+                    $level = $levelCategorie->findLevel($idParent);
+
+
+                    $categorie->setNom($nom);
+                    $categorie->setIdParent($idParent);
+                    $categorie->setImage($fileUploader->getFileName());
+                    $categorie->setNiveau($level);
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($categorie);
+                    $em->flush();
+
+                    return new JsonResponse(array('message' => $upload, 200));
+
+                } else {
+                    // Prévoir un message au cas ou l'upload n'aurait pas fonctionné
+                    return new JsonResponse(array('message' => 'false', 400));
+                }
+
+            } else {
                 // On récupère le level de la catégorie Parent
                 $levelCategorie = $this->container->get('level_categorie');
 
                 $level = $levelCategorie->findLevel($idParent);
 
-
-
                 $categorie->setNom($nom);
                 $categorie->setIdParent($idParent);
-                $categorie->setImage($fileUploader->getFileName());
                 $categorie->setNiveau($level);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($categorie);
                 $em->flush();
 
-
-            } else {
-                // Prévoir un message au cas ou l'upload n'aurait pas fonctionné
-                return new JsonResponse(array('message' => 'false', 400));
             }
 
-            return new JsonResponse(array('message' => $upload, 200));
+            //return new JsonResponse(array('message' => $upload, 200));
+            return new JsonResponse(array('message' => true, 200));
         }
 
 

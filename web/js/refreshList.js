@@ -8,29 +8,38 @@ $(document).ready(function() {
     refresh();
 
 
+
+    // fonction au changement du choix dans la liste déroulante
     $select.change(function() {
 
-        try {
 
-           $(this).attr('selected');
-            //alert('test');
-        } catch(err) {
-            alert(err);
-        }
+         // modification de l'option sélectionnée
+         $(this).attr('selected');
 
+         // On récupère l'id du parent
          var id = $(this).val();
+
+        $('#appbundle_categorie_image').removeAttr('disabled');
+
+         // On récupère le nom de l'option sélectionnée
          var option = $('option[value='+id+']');
          var cat = option.text();
 
+         // On ajoute l'id du parrent dans le champ caché
          $('#appbundle_categorie_idParent').val(id);
 
         $('#idMere').html(cat);
 
+        if(id > 0)
+        {
+            $('#appbundle_categorie_image').attr('disabled','disabled');
+        }
+
+        console.log(id);
+
     });
 
-
 });
-
 
 
 // Fonction permettant l'affichage des catégories et de leurs enfants
@@ -42,11 +51,17 @@ function parseArray(tab) {
 
     tab.forEach(function(elt) {
 
-        $select.append('<option value="'+ elt.id +'" level="'+elt.niveau+'" style="font-weight: 900;">' + elt.nom + '</option>');
+        if(elt.niveau === 2){
+            $select.append('<option value="'+ elt.id +'" level="'+elt.niveau+'">---- ' + elt.nom + '</option>');
+        } else if (elt.niveau === 3)
+        {
+            $select.append('<option value="'+ elt.id +'" level="'+elt.niveau+'">-------- ' + elt.nom + '</option>');
+        } else {
+            $select.append('<option value="'+ elt.id +'" level="'+elt.niveau+'">' + elt.nom + '</option>');
+        }
 
         if(elt.children)
         {
-            //console.log(elt.nom + 'enfants');
             parseArray(elt.children);
         }
     });
@@ -63,7 +78,7 @@ function refresh() {
     // on vide la liste déroulante
     $select.empty();
 
-    $select.append('<option value="0" selected disabled>Choisissez une catégorie</option>');
+    $select.append('<option value="0" level="null" selected>Choisissez une catégorie</option>');
 
     // On effectue une requête Ajax pour récupérer les informations de la base de données
     $.ajax({
@@ -71,11 +86,7 @@ function refresh() {
         url: refreshList,
         success: function (reponse) {
 
-
-            //console.log(reponse);
             parseArray(reponse);
-
-
         }
     });
 }

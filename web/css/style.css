@@ -185,3 +185,16 @@ section {
     margin-top: 100px;
     min-height: 600px;
 }
+
+option[level="1"]
+{
+    font-weight: bold;
+}
+
+
+
+#appbundle_categorie_nom
+{
+    margin-left: 70px;
+    width: 150px;
+}
