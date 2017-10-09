@@ -79,6 +79,9 @@ class PageController extends Controller
             // Pour récupérer la valeur du champ nom des catégories - OK
             $nom = $formCategorie->get('nom')->getData();
 
+            // Pour récupérer la valeur du champ idParent
+            $idParent = $formCategorie->get('idParent')->getData();
+
             // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
             $file = $_FILES['appbundle_categorie'];
 
@@ -93,6 +96,7 @@ class PageController extends Controller
             if($upload)
             {
                 $categorie->setNom($nom);
+                $categorie->setIdParent($idParent);
                 $categorie->setImage($fileUploader->getFileName());
 
                 $em = $this->getDoctrine()->getManager();
@@ -155,7 +159,8 @@ class PageController extends Controller
             }
 
 
-            return new JsonResponse(array('listCategories' => $result, 200));
+           // return new JsonResponse(array('listCategories' => $result, 200));
+            return new JsonResponse($result);
 
         }
 

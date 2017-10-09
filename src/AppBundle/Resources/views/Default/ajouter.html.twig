@@ -8,10 +8,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div id="catMessage"></div>
+                <div id="catMessage" class="alert alert-success">La catégorie a été ajoutée avec succès!!</div></div>
             </div>
         </div>
     </div>
+
+
 
         {% for message in app.flashes('notice') %}
             <div class="alert alert-success">
@@ -20,10 +22,15 @@
         {% endfor %}
 
 
+    {# Formulaire d'ajout d'une note #}
     {{ form_start(form) }}
 
-    <div class="row">
 
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_errors(form) }}
+        </div>
             <div class="col-md-offset-3 col-md-3">
                 {{ form_row(form.titre)}}
             </div>
@@ -48,15 +55,16 @@
         </div>
 
     </div>
+
     <div class="row">
         <div class="col-md-offset-3 col-md-3">
             {{ form_row(form.Ajouter) }}
         </div>
-
     </div>
 
     {{ form_end(form) }}
 
+    {# Formulaire pour l'ajout d'une catégorie #}
     <div id="formCategorie">
         {{ include('AppBundle:Formulaires:formCategorie.html.twig') }}
     </div>

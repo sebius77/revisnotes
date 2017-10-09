@@ -2,6 +2,11 @@
 
 Catégorie Mère :<div id="idMere"> </div>
 
-{{ form(formCategorie, {'attr': {'id': 'formCat' }}) }}
+{{ form_start(formCategorie, {'attr': {'id': 'formCat' }}) }}
+    {{ form_row(formCategorie.nom) }}
+    {{ form_row(formCategorie.image) }}
+    {{ form_widget(formCategorie.Ajout, {'attr': {'class': 'glyphicon glyphicon-floppy-saved'}}) }}
 
-<a href="{{ path('Ajouter') }}" id="delButton" class="btn btn-danger">Retirer</a>
+{{ form_end(formCategorie) }}
+
+<a href="{{ path('Ajouter') }}" id="delButton" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></a>

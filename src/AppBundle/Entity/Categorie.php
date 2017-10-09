@@ -29,6 +29,12 @@ class Categorie
     private $nom;
 
     /**
+     * @var
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="niveau", type="integer", nullable=true)
@@ -62,8 +68,9 @@ class Categorie
      */
     private $notes;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @var
      */
     private $children;
 
@@ -258,9 +265,7 @@ class Categorie
      */
     public function setChildren(\AppBundle\Entity\Categorie $children = null)
     {
-        $this->children = $children;
-
-        return $this;
+        $this->children[] = $children;
     }
 
     /**
@@ -319,5 +324,29 @@ class Categorie
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Categorie
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

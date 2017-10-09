@@ -6,6 +6,10 @@ $(document).ready(function() {
     $form = $('#formCategorie');
     $form.hide();
 
+    // On récupère la div pour le message d'ajout d'une catégorie que l'on cache
+    $catMessage = $('#catMessage');
+    $catMessage.hide();
+
     // On récupère le bouton d'ajout pour l'affichage du formulaire des catégories
     $addCategory = $('#addCategory');
 
@@ -17,7 +21,6 @@ $(document).ready(function() {
     $addCategory.click(function(e) {
         e.preventDefault();
         $('#containerForm').append($form);
-        //$form.show();
         $form.toggle("slide");
     });
 
@@ -25,7 +28,6 @@ $(document).ready(function() {
     // Dans le cas où l'on clique sur le bouton delButton, on cache le formulaire
     $delButton.click(function(e) {
         e.preventDefault();
-        //$form.hide();
         $form.toggle("slide");
     });
 
@@ -38,17 +40,7 @@ $(document).ready(function() {
 
 
 
-        // Test simple d'affichage du champ nom catégorie
-        //console.log($(this.elements['nom']));
-
-
-        alert('test');
-        //var nom = $(this).find("#appbundle_categorie_nom").val();
-        //var image = $(this).find('#appbundle_categorie_image').val();
-        //var form = $('#formCat');
-
-
-
+        // reguête AJAX permettant l'ajout d'une catégorie
         $.ajax({
             type: "POST",
             url: Ajouter,
@@ -56,8 +48,8 @@ $(document).ready(function() {
             processData: false,
             data: formdata,
             success: function(reponse) {
-               //alert(reponse);
-                $('#catMessage').append('<div class="alert alert-success">La catégorie a été ajoutée avec succès!!</div>');
+                $catMessage.show();
+                $catMessage.fadeOut(5000);
                 refresh();
 
             }

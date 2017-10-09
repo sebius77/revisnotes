@@ -75,9 +75,12 @@ body {
     position: absolute;
     right: 0;
    border: 1px solid;
-    width: 250px;
-    height: 400px;
+    width: 300px;
+    height: 600px;
     z-index: 500;
+    background-color: #19D4FF;
+    color: white;
+    font-weight: bold;
 
 }
 
@@ -104,6 +107,7 @@ body {
     box-shadow: 8px 8px 0px #75C2D4;
 }
 
+/*
 .btn {
     display: block;
     width: 150px;
@@ -115,6 +119,7 @@ body {
     box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
 
 }
+*/
 
 
 .signature {
@@ -160,8 +165,23 @@ a {
 
 
 #catMessage {
-    margin-top: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     height: 50px;
 
+}
+
+
+.tinymce {
+    min-height: 400px;
+}
+
+
+
+/*
+    Section englobant le block body
+ */
+
+section {
+    margin-top: 100px;
+    min-height: 600px;
 }
