@@ -287,6 +287,7 @@ class Categorie
             'id' => $this->getId(),
             'nom' => $this->getNom(),
             'idParent' => $this->getIdParent(),
+            'niveau' => $this->getNiveau(),
         ];
 
 

@@ -9,3 +9,9 @@ services:
 
     tab_categories:
         class:  AppBundle\Service\TabCategories
+
+
+    level_categorie:
+        class:  AppBundle\Service\LevelCategorie
+        arguments:
+            - "@doctrine.orm.entity_manager"

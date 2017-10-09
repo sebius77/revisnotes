@@ -42,7 +42,7 @@ function parseArray(tab) {
 
     tab.forEach(function(elt) {
 
-        $select.append('<option value="'+ elt.id +'">' + elt.nom + '</option>');
+        $select.append('<option value="'+ elt.id +'" level="'+elt.niveau+'" style="font-weight: 900;">' + elt.nom + '</option>');
 
         if(elt.children)
         {
@@ -72,7 +72,7 @@ function refresh() {
         success: function (reponse) {
 
 
-            console.log(reponse);
+            //console.log(reponse);
             parseArray(reponse);
 
 

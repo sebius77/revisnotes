@@ -95,9 +95,18 @@ class PageController extends Controller
             // On enregistre la catégorie en base de données
             if($upload)
             {
+
+                // On récupère le level de la catégorie Parent
+                $levelCategorie = $this->container->get('level_categorie');
+
+                $level = $levelCategorie->findLevel($idParent);
+
+
+
                 $categorie->setNom($nom);
                 $categorie->setIdParent($idParent);
                 $categorie->setImage($fileUploader->getFileName());
+                $categorie->setNiveau($level);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($categorie);
