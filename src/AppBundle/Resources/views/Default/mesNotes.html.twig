@@ -1,0 +1,27 @@
+{% extends "GebsUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    <div class="container">
+        <div class="row">
+            {% for categorie in listCategories %}
+                {% if categorie.niveau == 1 %}
+                    <div class="col-md-4">
+                        <!-- normal -->
+                        <div class="ih-item square effect13 left_to_right">
+                            <a href="#">
+                                <div class="img"><img src="{{app.request.basepath}}/uploads/images/{{categorie.image}}" alt="image" /></div>
+                                <div class="info">
+                                    <h3>{{ categorie.nom }}</h3>
+                                    <p>{{ categorie.description }}</p>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- end normal -->
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

@@ -11,13 +11,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand"><img src={{ asset('images/logoSimple.png') }} ></div>
+            <div class="navbar-brand"><a href="{{ path('homepage') }}"><img src={{ asset('images/newLogo.jpg') }} ></a></div>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 
             <ul class="nav navbar-nav">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a class="glyphicon glyphicon-home" href="{{ path('Accueil') }}"> Mesnotes</a></li>
+                    <li><a class="glyphicon glyphicon-home" href="{{ path('mesNotes') }}"> Mesnotes</a></li>
                     <li><a class="glyphicon glyphicon-folder-close" href="{{ path('AReviser') }}">ARéviser</a></li>
                     <li><a class="glyphicon glyphicon-edit" href="{{ path('Ajouter') }}">Ajouter</a></li>
                     <li><a class="glyphicon glyphicon-search">Rechercher</a></li>

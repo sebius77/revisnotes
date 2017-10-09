@@ -18,6 +18,14 @@
 
 }
 
+.navbar-default .navbar-nav > li > a {
+    color: #19D4FF;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #FF7900;
+    border-bottom: 2px solid;
+}
 
 /************************
 *    Corps de page      *
@@ -197,4 +205,9 @@ option[level="1"]
 {
     margin-left: 70px;
     width: 150px;
+}
+
+
+.ih-item {
+    margin-bottom: 50px;
 }

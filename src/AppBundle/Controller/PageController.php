@@ -15,15 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
 {
-    /**
-     * @Route("accueil", name="Accueil")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('AppBundle:Default:accueil.html.twig');
-    }
-
 
     /**
      * @Route("aReviser", name="AReviser")
@@ -83,7 +74,7 @@ class PageController extends Controller
             $idParent = $formCategorie->get('idParent')->getData();
 
 
-            // On test si la catégorie a un idParent
+            // On test si la catégorie est une catégorie mère (idParent null)
             if($idParent === null) {
 
 
