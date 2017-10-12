@@ -85,7 +85,6 @@ function refresh() {
         type: "GET",
         url: refreshList,
         success: function (reponse) {
-
             parseArray(reponse);
         }
     });

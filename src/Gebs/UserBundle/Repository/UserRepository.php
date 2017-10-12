@@ -2,6 +2,7 @@
 
 namespace Gebs\UserBundle\Repository;
 
+
 /**
  * UserRepository
  *
@@ -10,4 +11,9 @@ namespace Gebs\UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+
+
+
 }

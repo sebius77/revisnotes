@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             {% for categorie in listCategories %}
-                {% if categorie.niveau == 1 %}
+
                     <div class="col-md-4">
                         <!-- normal -->
                         <div class="ih-item square effect13 left_to_right">
@@ -19,9 +19,22 @@
                         </div>
                         <!-- end normal -->
                     </div>
-                {% endif %}
+
             {% endfor %}
         </div>
+        <div class="row">
+
+            <ul>
+            <div class="pagination">
+                {% for p in range(1, nombrePage) %}
+                    <li{% if p == page %} class="active"{% endif %}>
+                        <a href="{{ path('mesNotes', {'page': p}) }}">{{ p }}</a>
+                    </li>
+                {% endfor %}
+            </div>
+            </ul>
+        </div>
+
     </div>
 
 {% endblock fos_user_content %}

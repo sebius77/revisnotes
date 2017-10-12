@@ -69,6 +69,10 @@ body {
     margin-top: 20px;
 }
 
+#footer h3 {
+    color: #FF7900;
+}
+
 
 /*************************
 *      Categorie         *
@@ -211,3 +215,4 @@ option[level="1"]
 .ih-item {
     margin-bottom: 50px;
 }
+

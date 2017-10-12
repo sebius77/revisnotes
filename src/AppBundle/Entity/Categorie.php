@@ -112,6 +112,8 @@ class Categorie
      */
     public function getNom()
     {
+        $tmp_nom = explode('_', $this->nom);
+        $this->nom = end($tmp_nom);
         return $this->nom;
     }
 
