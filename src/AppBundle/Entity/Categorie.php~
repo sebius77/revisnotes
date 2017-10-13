@@ -64,6 +64,7 @@ class Categorie
 
 
     /**
+     * @var
      * @ORM\OneToMany(targetEntity="Note", mappedBy="categorie")
      */
     private $notes;
@@ -79,6 +80,20 @@ class Categorie
      * @ORM\ManyToOne(targetEntity="Gebs\UserBundle\Entity\User", inversedBy="categories")
      */
     private $user;
+
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="categories")
+     */
+    private $parent;
+
+
+    /**
+     * @var object
+     * @ORM\OneToMany(targetEntity="Categorie", mappedBy="parent")
+     */
+    protected $categories;
 
 
     /**
@@ -112,6 +127,8 @@ class Categorie
      */
     public function getNom()
     {
+        $tmp_nom = explode('_', $this->nom);
+        $this->nom = end($tmp_nom);
         return $this->nom;
     }
 
@@ -287,6 +304,7 @@ class Categorie
             'id' => $this->getId(),
             'nom' => $this->getNom(),
             'idParent' => $this->getIdParent(),
+            'niveau' => $this->getNiveau(),
         ];
 
 
@@ -348,5 +366,63 @@ class Categorie
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \AppBundle\Entity\Categorie $parent
+     *
+     * @return Categorie
+     */
+    public function setParent(\AppBundle\Entity\Categorie $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \AppBundle\Entity\Categorie
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Add category
+     *
+     * @param \AppBundle\Entity\Categorie $category
+     *
+     * @return Categorie
+     */
+    public function addCategory(\AppBundle\Entity\Categorie $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \AppBundle\Entity\Categorie $category
+     */
+    public function removeCategory(\AppBundle\Entity\Categorie $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

@@ -5,10 +5,8 @@
 {% block image %}
     <div id="img-accueil">
         <div id="titleHome" class="container">
-            <div class="jumbotron">
-                Une méthode pour réviser
-                <hr><hr><hr>
-            </div>
+            <h1>Avec Revisnotes</h1>
+           <h2>Réviser comme vous le voulez.</h2>
         </div>
     </div>
 {% endblock %}
@@ -16,52 +14,95 @@
 {% block body %}
 
     <div class="container">
-    <div class="row section-home">
-        <div class="col-md-6">
-            <h2>1) Prenez vos notes</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Simple</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            L'utilisation de Revisnotes se fait simplement.
+                            Créez votre compte et créez vos premières notes.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Rapide</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                           Une fois vos notes écrites, il vous suffit
+                            d'un clic pour qu'elles soient en mode révision.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Efficace</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            En appliquant cette méthode régulièrement vous progresserez rapidement.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6">
-            <!-- normal -->
-            <div class="ih-item square effect13 left_to_right"><a href="#">
-                    <div class="img"><img src="{{ asset('images/notes.jpg') }}"></div>
-                    <div class="info">
-                        <h3>Vous voulez apprendre ?</h3>
-                        <p>Ecrivez vos notes avec Revisnotes. Décomposer votre sujet en plusieurs petites fiches.
-                        L'information sera plus simple à retenir.</p>
-                    </div></a></div>
-            <!-- end normal -->
+        <div class=row">
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Didactique</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            Le code source est disponible en suivant le lien indiqué dans le pied de page.
+                            Une documentation sera fournie pour chacune des fonctionnalités du site.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h2 class="text-center">Évolutive</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            L'application est conçue pour évoluer. Si vous souhaitez apporter votre contribution, vous
+                            pouvez me joindre via le lien "Contactez-moi".
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h2 class="text-center">Pour le plus grand nombre</h2>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Le code source est disponible en suivant le lien indiqué dans le pied de page.
+                        Une documentation sera fournie pour chacune des fonctionnalités du site.
+                    </p>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
-    <div class="row section-home">
-        <div class="col-md-6">
-            <!-- normal -->
-            <div class="ih-item square effect13 right_to_left"><a href="#">
-                    <div class="img"><img src="{{ asset('images/entrainer.jpg') }}" alt="img"></div>
-                    <div class="info">
-                        <h3>Entraînez-vous  !!</h3>
-                        <p>Revisnotes vous fait revoir les fiches les moins maîtrisées. En répétant souvent, vos gestes deviendront des réflexes.</p>
-                    </div></a></div>
-            <!-- end normal -->
-        </div>
-        <div class="col-md-6">
-            <h2>2) Révisez régulièrement</h2>
-        </div>
-    </div>
-    <div class="row section-home">
-        <div class="col-md-6">
-            <h2>3) L'information vous retiendrez</h2>
-        </div>
-        <div class="col-md-6">
-            <!-- normal -->
-            <div class="ih-item square effect13 left_to_right"><a href="#">
-                    <div class="img"><img src="{{ asset('images/retenir.jpg') }}"></div>
-                    <div class="info">
-                        <h3>Retenez l'information</h3>
-                        <p>En applquant la méthode l'information sera gravée pour longtemps.</p>
-                    </div></a></div>
-            <!-- end normal -->
-        </div>
-    </div>
-    </div>
+
+
 
 {% endblock %}

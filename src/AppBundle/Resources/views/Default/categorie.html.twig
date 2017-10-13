@@ -1,0 +1,51 @@
+{% extends "GebsUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+   <div class="container">
+       <div class="row">
+           <div class="col-md-12">
+               <h2 class="text-center">{{ categorie.nom|upper }}</h2>
+               <hr>
+           </div>
+       </div>
+
+       <!-- Affichage des notes de la catégorie mère -->
+       <div class="row">
+           <div class="col-md-12">
+               <div class="panel panel-success">
+                   <div class="panel-heading" data-toggle="collapse" data-target="#content">
+                       <h3>Notes de la catégorie</h3>
+                   </div>
+                   <div id="content" class="panel-body collapse">
+               {% for note in categorie.notes %}
+                   <div>
+                       {{ note.titre }}
+                       <span class="pull-right">
+                           <a href="#" class="glyphicon glyphicon-eye-open"></a>
+                           <a href="#" class="glyphicon glyphicon-pencil"></a>
+                           <a href="#" class="glyphicon glyphicon-trash"></a>
+                       </span>
+                   </div>
+               {% endfor %}
+
+                   </div>
+
+               </div>
+           </div>
+       </div>
+
+       <!-- Affichage des sous-catégorie -->
+        <div class="row">
+
+            <div class="col-md-12">
+                {% for categorie in categorie.categories %}
+                    {{ include('AppBundle:Categorie:catEnfant.html.twig') }}
+                {% endfor %}
+
+            </div>
+        </div>
+
+   </div>
+
+{% endblock fos_user_content %}

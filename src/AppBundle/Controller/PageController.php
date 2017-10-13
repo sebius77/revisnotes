@@ -47,11 +47,10 @@ class PageController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
 
-            // En modifiant la base de données l'utilisateur n'est plus directement relié aux note
-            // mais aux catégories. Les lignes qui suivent devront s'appliquer à l'ajout des catégories
-            //$user = $this->getUser();
-            //$note->setUser($user);
             $em = $this->getDoctrine()->getManager();
+
+           // $categorie->addNote($note);
+
 
             $em->persist($note);
             $em->flush();
@@ -110,6 +109,15 @@ class PageController extends Controller
                 $levelCategorie = $this->container->get('level_categorie');
 
                 $level = $levelCategorie->findLevel($idParent);
+
+                // récupération de la catégorie mère
+                $em = $this->getDoctrine()->getManager();
+
+                $catParent = $em->getRepository('AppBundle:Categorie')
+                    ->find($idParent);
+
+
+                $categorie->setParent($catParent);
             }
 
             // récupération de l'utilisateur courant
@@ -124,7 +132,6 @@ class PageController extends Controller
 
 
             // Il faudra prévoir une vérification si doublon et un message en conséquence.
-
 
             $categorie->setIdParent($idParent);
             $categorie->setNiveau($level);

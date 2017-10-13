@@ -1,0 +1,43 @@
+
+{# Affichage d'une catégorie et de ses enfants #}
+
+
+<!-- Affichage des notes de la catégorie mère -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading" data-toggle="collapse" data-target="#content-{{ categorie.id }}">
+                <h3>{{categorie.nom }}</h3>
+            </div>
+            <div id="content-{{ categorie.id }}" class="panel-body collapse">
+                {% for note in categorie.notes %}
+                    <div>
+                        {{ note.titre }}
+                        <span class="pull-right">
+                           <a href="#" class="glyphicon glyphicon-eye-open"></a>
+                           <a href="#" class="glyphicon glyphicon-pencil"></a>
+                           <a href="#" class="glyphicon glyphicon-trash"></a>
+                       </span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Affichage des sous-catégorie -->
+<div class="row">
+
+    <div class="col-md-12">
+        <div style="margin-left: 50px;">
+        {% if categorie.categories is not null %}
+        {% for categorie in categorie.categories %}
+            {{ include('AppBundle:Categorie:catEnfant.html.twig') }}
+        {% endfor %}
+        {% endif %}
+        </div>
+
+    </div>
+</div>

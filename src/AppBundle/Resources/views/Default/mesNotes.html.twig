@@ -9,7 +9,7 @@
                     <div class="col-md-4">
                         <!-- normal -->
                         <div class="ih-item square effect13 left_to_right">
-                            <a href="#">
+                            <a href="{{ path('categorie', {'id': categorie.id}) }}">
                                 <div class="img"><img src="{{app.request.basepath}}/uploads/images/{{categorie.image}}" alt="image" /></div>
                                 <div class="info">
                                     <h3>{{ categorie.nom }}</h3>

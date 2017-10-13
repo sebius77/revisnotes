@@ -93,7 +93,6 @@ body {
     background-color: #19D4FF;
     color: white;
     font-weight: bold;
-
 }
 
 
@@ -138,7 +137,7 @@ body {
 
 }
 
-a {
+#footer a {
     color: white;
 }
 
@@ -146,34 +145,32 @@ a {
 
 .section-home {
     min-height: 300px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
-    border: 1px solid;
     text-align: center;
-
 }
 
 
 #img-accueil {
     background-image: url('../images/accueilV3.jpg');
     background-size: cover;
-    height: 600px;
+    -webkit-background-size: cover;
+    min-height: 1000px;
 }
 
 #titleHome {
-    padding-top: 150px;
-    width: 55%;
+    margin-right: 25%;
+    padding-top: 200px;
+    width: 25%;
+    color: #B25500;
+    text-align: center;
 }
 
-#titleHome .jumbotron {
-    background-color: white;
-    color: #75C2D4;
-    text-align: center;
-    font-size: 2em;
+#titleHome h1 {
     font-weight: bold;
-    padding: 5px;
-    border: 5px solid;
+    font-size: 4em;
 }
+
 
 
 #catMessage {
@@ -209,10 +206,5 @@ option[level="1"]
 {
     margin-left: 70px;
     width: 150px;
-}
-
-
-.ih-item {
-    margin-bottom: 50px;
 }
 

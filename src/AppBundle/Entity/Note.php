@@ -68,7 +68,7 @@ class Note
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="notes")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="notes", cascade={"persist"})
      * @Assert\NotBlank()
      */
     private $categorie;
@@ -212,7 +212,7 @@ class Note
      *
      * @return Note
      */
-    public function setCategorie(\AppBundle\Entity\Categorie $categorie = null)
+    public function setCategorie(\AppBundle\Entity\Categorie $categorie)
     {
         $this->categorie = $categorie;
 
