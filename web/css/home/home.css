@@ -1,0 +1,148 @@
+/*
+Feuille de style pour tout ce qui concerne la page d'accueil
+
+ */
+
+
+
+#img-accueil img{
+    z-index: -500;
+}
+
+
+#titleHome h1 {
+    font-weight: bold;
+    font-size: 4em;
+}
+
+
+#titleHome {
+    color: #B25500;
+    text-align: center;
+}
+
+
+
+
+@media screen and (min-width: 280px) and (max-width: 361px)
+{
+    #titleHome {
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: 200px;
+    }
+
+    #titleHome h1 {
+        font-size: 1.1em;
+    }
+
+    #titleHome h2 {
+        font-size: 0.6em;
+    }
+}
+
+
+@media screen and (min-width: 361px) and (max-width: 486px)
+{
+    #titleHome {
+        position: absolute;
+        right: 0;
+        top: 40px;
+        width: 200px;
+    }
+
+    #titleHome h1 {
+        font-size: 1.1em;
+    }
+
+    #titleHome h2 {
+        font-size: 0.6em;
+    }
+}
+
+
+
+@media screen and (min-width: 487px) and (max-width: 767px)
+{
+    #titleHome {
+        position: absolute;
+        right: 80px;
+        top: 60px;
+        width: 200px;
+    }
+
+    #titleHome h1 {
+        font-size: 1.3em;
+    }
+
+    #titleHome h2 {
+        font-size: 0.8em;
+    }
+}
+
+
+
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+{
+    #titleHome {
+        position: absolute;
+        right: 0px;
+        top: 100px;
+        width: 500px;
+        font-size: 0.5em;
+
+    }
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1199px)
+{
+    #titleHome {
+        position: absolute;
+        right: 50px;
+        top: 100px;
+        width: 500px;
+
+    }
+}
+
+
+
+@media screen and (min-width: 1200px) and (max-width: 1509px)
+{
+    #titleHome {
+        position: absolute;
+        right: 150px;
+        top: 200px;
+        width: 500px;
+
+    }
+}
+
+
+
+@media screen and (min-width: 1510px) and (max-width: 1925px)
+{
+    #titleHome {
+        position: absolute;
+        right: 250px;
+        top: 250px;
+        width: 500px;
+
+
+
+    }
+}
+
+@media screen and (min-width: 1926px)
+{
+    #titleHome {
+        position: absolute;
+        right: 400px;
+        top: 300px;
+        width: 500px;
+
+    }
+}

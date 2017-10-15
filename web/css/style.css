@@ -151,25 +151,7 @@ body {
 }
 
 
-#img-accueil {
-    background-image: url('../images/accueilV3.jpg');
-    background-size: cover;
-    -webkit-background-size: cover;
-    min-height: 1000px;
-}
 
-#titleHome {
-    margin-right: 25%;
-    padding-top: 200px;
-    width: 25%;
-    color: #B25500;
-    text-align: center;
-}
-
-#titleHome h1 {
-    font-weight: bold;
-    font-size: 4em;
-}
 
 
 
@@ -206,5 +188,9 @@ option[level="1"]
 {
     margin-left: 70px;
     width: 150px;
+}
+
+.ih-item {
+    margin-bottom: 50px;
 }
 
