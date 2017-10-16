@@ -30,17 +30,8 @@ class CategorieController extends Controller
             ->find($id);
 
 
-        $notes = $categorie->getNotes();
+       // $notes = $categorie->getNotes();
 
-
-
-
-
-        //die(var_dump($categorie->getNotes()));
-
-
-        //$notes = $em->getRepository('AppBundle:Note')
-        //    ->findAll();
 
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:categorie.html.twig', array(

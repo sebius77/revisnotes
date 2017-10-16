@@ -1,0 +1,40 @@
+
+{% extends "GebsUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">{{ note.titre }}</h1>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <H2>Enoncé</H2>
+                    </div>
+                    {{ note.enonce|raw }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-danger">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#note-{{ note.id }}">
+                        <H2>Solution</H2>
+                    </div>
+                    <div id="note-{{ note.id }}" class="panel-body collapse">
+                        {{ note.solution|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock fos_user_content %}

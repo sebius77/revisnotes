@@ -123,7 +123,7 @@ Feuille de style pour tout ce qui concerne la page d'accueil
 
 
 
-@media screen and (min-width: 1510px) and (max-width: 1925px)
+@media screen and (min-width: 1510px) and (max-width: 1670px)
 {
     #titleHome {
         position: absolute;
@@ -135,6 +135,21 @@ Feuille de style pour tout ce qui concerne la page d'accueil
 
     }
 }
+
+
+@media screen and (min-width: 1671px) and (max-width: 1925px)
+{
+    #titleHome {
+        position: absolute;
+        right: 300px;
+        top: 280px;
+        width: 500px;
+
+
+
+    }
+}
+
 
 @media screen and (min-width: 1926px)
 {

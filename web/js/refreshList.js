@@ -8,7 +8,6 @@ $(document).ready(function() {
     refresh();
 
 
-
     // fonction au changement du choix dans la liste déroulante
     $select.change(function() {
 

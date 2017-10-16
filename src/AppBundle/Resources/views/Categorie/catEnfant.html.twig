@@ -14,11 +14,26 @@
                     <div>
                         {{ note.titre }}
                         <span class="pull-right">
-                           <a href="#" class="glyphicon glyphicon-eye-open"></a>
-                           <a href="#" class="glyphicon glyphicon-pencil"></a>
-                           <a href="#" class="glyphicon glyphicon-trash"></a>
+                           <a href="{{ path('read', {'id': note.id}) }}" class="glyphicon glyphicon-eye-open"></a>
+                           <a href="{{ path('edit', {'id': note.id}) }}" class="glyphicon glyphicon-pencil"></a>
+                            <a href="#" class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#modal-{{ note.id }}"></a>
                        </span>
                     </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal-{{ note.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Êtes-vous sûr de vouloir supprimer cette note ?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                            aria-hidden="true" id="delButton" value="{{ note.id }}">Oui</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 {% endfor %}
             </div>
         </div>

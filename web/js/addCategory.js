@@ -1,14 +1,16 @@
 // /web/js/addCategory.js
 
+
+// On récupère la div pour le message d'ajout d'une catégorie que l'on cache
+$catMessage = $('#catMessage');
+$catMessage.hide();
+
 $(document).ready(function() {
 
     // On récupère le formulaire Catégorie que l'on cache
     $form = $('#formCategorie');
     $form.hide();
 
-    // On récupère la div pour le message d'ajout d'une catégorie que l'on cache
-    $catMessage = $('#catMessage');
-    $catMessage.hide();
 
     // On récupère le bouton d'ajout pour l'affichage du formulaire des catégories
     $addCategory = $('#addCategory');
