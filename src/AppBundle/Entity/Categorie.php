@@ -62,10 +62,16 @@ class Categorie
      */
     private $idParent;
 
+    /**
+     * @var
+     * @ORM\Column(name="groupement", type="string", length=255)
+     */
+    private $groupement;
+
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="Note", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="Note", mappedBy="categorie", cascade={"remove", "persist"})
      */
     private $notes;
 
@@ -91,7 +97,7 @@ class Categorie
 
     /**
      * @var object
-     * @ORM\OneToMany(targetEntity="Categorie", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="Categorie", mappedBy="parent", cascade={"remove", "persist"})
      */
     protected $categories;
 
@@ -427,5 +433,29 @@ class Categorie
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set groupement
+     *
+     * @param string $groupement
+     *
+     * @return Categorie
+     */
+    public function setGroupement($groupement)
+    {
+        $this->groupement = $groupement;
+
+        return $this;
+    }
+
+    /**
+     * Get groupement
+     *
+     * @return string
+     */
+    public function getGroupement()
+    {
+        return $this->groupement;
     }
 }

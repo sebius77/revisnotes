@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class NoteRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    /**
+     * Méthode permettant de récupérer la dernière note à réviser
+     */
+    public function findLastNote($id)
+    {
+        $query = $this->_em->createQuery('SELECT n FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u WHERE u.id = :id
+        AND c.aReviser = 1 AND n.dateRevision <= :now ORDER BY n.dateRevision ASC');
+        $query->setMaxResults(1);
+        $query->setParameter('now', new \DateTime('now'));
+        $query->setParameter('id', $id);
+
+        return $query->getOneOrNullResult();
+    }
 }
+

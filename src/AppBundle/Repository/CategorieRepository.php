@@ -58,6 +58,23 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    /**
+     * @param $groupement
+     * @param $level
+     * @param $id
+     * @return array
+     */
+    public function findGroupementCat($groupement, $level, $id)
+    {
+        $query = $this->_em->createQuery('SELECT c FROM AppBundle:Categorie c JOIN c.user u WHERE u.id = :id 
+        AND c.groupement = :groupement AND c.niveau >= :level');
+        $query->setParameter('groupement', $groupement);
+        $query->setParameter('level', $level);
+        $query->setParameter('id', $id);
+
+        return $query->getResult();
+    }
+
 
 
 

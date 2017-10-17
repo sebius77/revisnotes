@@ -147,5 +147,28 @@ class NoteController extends Controller
     }
 
 
+    /**
+     * @Route("aReviser", name="AReviser")
+     */
+    public function reviseAction(Request $request)
+    {
+
+        $user = $this->getUser();
+        $id = $user->getId();
+
+        $em = $this->getDoctrine()->getManager();
+
+        // récupération de la catégorie
+        $note = $em->getRepository('AppBundle:Note')
+            ->findLastNote($id);
+
+
+
+        return $this->render('AppBundle:Default:aReviser.html.twig', array(
+            'note' => $note,
+        ));
+    }
+
+
 
 }

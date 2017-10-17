@@ -16,17 +16,6 @@ use Symfony\Component\HttpFoundation\Request;
 class PageController extends Controller
 {
 
-    /**
-     * @Route("aReviser", name="AReviser")
-     */
-    public function reviseAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('AppBundle:Default:aReviser.html.twig');
-    }
-
-
-
 
     /**
      * @Route("ajouter", name="Ajouter")
@@ -37,20 +26,22 @@ class PageController extends Controller
         $note = new Note();
         $form = $this->get('form.factory')->create(NoteType::class, $note);
 
-
         // instanciation de l'objet Categorie
         $categorie = new Categorie();
         $formCategorie = $this->get('form.factory')->create(CategorieType::class);
 
 
+        // récupération de l'utilisateur courant
+        $user = $this->getUser();
+
+        // récupération du pseudo de l'utilisateur courant
+        $username = $user->getUsername();
+
+
         // Lorsque le formulaire est validé
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
-
             $em = $this->getDoctrine()->getManager();
-
-           // $categorie->addNote($note);
-
 
             $em->persist($note);
             $em->flush();
@@ -59,7 +50,6 @@ class PageController extends Controller
 
             return $this->redirectToRoute('Ajouter');
         }
-
 
         // Traitement pour l'ajout des catégories en Ajax
         if($request->isXmlHttpRequest()) {
@@ -90,6 +80,9 @@ class PageController extends Controller
                 // Si la catégorie Parent est null alors le level est automatiquement 1
                 $level = 1;
 
+                // On renseigne une variable groupement pour faciliter la recherche
+                $groupement = $username . '_' . $nom;
+
                 // Dans le cas ou l'upload à fonctionner
                 // On enregistre la catégorie en base de données
                 if ($upload) {
@@ -117,15 +110,12 @@ class PageController extends Controller
                     ->find($idParent);
 
 
+                // On indique le groupement du parent
+                $groupement = $username . '_' . $catParent->getNom();
+
+
                 $categorie->setParent($catParent);
             }
-
-            // récupération de l'utilisateur courant
-            $user = $this->getUser();
-
-            // récupération du pseudo de l'utilisateur courant
-            $username = $user->getUsername();
-
 
             // On modifie le nom de la catégorie
             $categorie->setNom($username . '_' . $nom);
@@ -136,6 +126,7 @@ class PageController extends Controller
             $categorie->setIdParent($idParent);
             $categorie->setNiveau($level);
             $categorie->setDescription($description);
+            $categorie->setGroupement($groupement);
 
             $categorie->setUser($user);
 
