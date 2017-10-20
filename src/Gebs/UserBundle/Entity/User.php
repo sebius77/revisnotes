@@ -55,7 +55,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function setParametres(\AppBundle\Entity\Parametres $parametres = null)
+    public function setParametres(\AppBundle\Entity\Parametres $parametres)
     {
         $this->parametres = $parametres;
 
@@ -104,5 +104,12 @@ class User extends BaseUser
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->parametres = new \AppBundle\Entity\Parametres();
+        $this->addRole('ROLE_USER');
     }
 }

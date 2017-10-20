@@ -150,7 +150,7 @@ class NoteController extends Controller
     /**
      * @Route("aReviser", name="AReviser")
      */
-    public function reviseAction(Request $request)
+    public function reviseAction()
     {
 
         $user = $this->getUser();
@@ -158,7 +158,7 @@ class NoteController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        // récupération de la catégorie
+        // récupération de la note
         $note = $em->getRepository('AppBundle:Note')
             ->findLastNote($id);
 
@@ -167,6 +167,135 @@ class NoteController extends Controller
         return $this->render('AppBundle:Default:aReviser.html.twig', array(
             'note' => $note,
         ));
+    }
+
+
+    /**
+     * @param $id
+     * @param $bouton
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * Cette méthode permet au clic de modifier la date de révision de la note
+     * @Route("autoEval/{id}/{bouton}", name="autoEval")
+     */
+    public function autoEval($id, $bouton)
+    {
+        $user = $this->getUser();
+        $idUser = $user->getId();
+
+        // Prévoir un contrôle sur l'idUser
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $note = $em->getRepository('AppBundle:Note')
+            ->find($id);
+
+
+        $today = new \DateTime();
+
+
+        $parametres = $user->getParametres();
+
+        $revoir = $parametres->getRevoir();
+        $difficile = $parametres->getDifficile();
+        $bien = $parametres->getBien();
+        $parfait = $parametres->getParfait();
+
+
+        switch($bouton) {
+            case 'revoir':
+                $newDate = $today->add(new \DateInterval('P' . $revoir . 'D'));
+                break;
+            case 'difficile':
+                $newDate = $today->add(new \DateInterval('P' . $difficile . 'D'));
+                break;
+            case 'bien':
+                $newDate = $today->add(new \DateInterval('P' . $bien . 'D'));
+                break;
+            case 'parfait':
+                $newDate = $today->add(new \DateInterval('P' . $parfait . 'D'));
+                break;
+            default:
+                $newDate = false;
+        }
+
+       // die(var_dump($newDate));
+
+        $note->setDateRevision($newDate);
+
+        $em->persist($note);
+
+        $em->flush();
+
+
+        return $this->redirectToRoute('AReviser');
+
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @Route("search", name="search")
+     */
+    public function searchAction(Request $request)
+    {
+
+        if($request->isXmlHttpRequest()) {
+
+            $term = $request->get('motcle');
+
+            $em = $this->getDoctrine()->getManager();
+
+            $user = $this->getUser();
+            $idUser = $user->getId();
+
+
+            $notesUser = $em->getRepository('AppBundle:Note')
+                ->findAllByUser($idUser, $term);
+
+
+            return new JsonResponse(array('data' => $notesUser, 200));
+        }
+
+
+        return new JsonResponse(array('data' => false, 400));
+
+    }
+
+    /**
+     * @Route("resultSearch", name="resultSearch")
+     */
+    public function resultAction(Request $request)
+    {
+
+        // Lorsque le formulaire est validé
+        if($request->isXmlHttpRequest())
+        {
+
+            $id = $request->request->get('objetId');
+
+            // Traitement pour voir si la note appartient bien à l'utilisateur et qu'elle existe
+
+            $em = $this->getDoctrine()->getManager();
+
+            // Vérification si la recherche existe
+            $note = $em->getRepository('AppBundle:Note')
+                ->find($id);
+
+
+            if ($note){
+                return new JsonResponse(array('message' => true, 200));
+            } else
+            {
+                return new JsonResponse(array('message' => false, 400));
+            }
+
+
+
+
+
+        }
+
     }
 
 

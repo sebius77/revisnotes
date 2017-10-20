@@ -1,0 +1,32 @@
+{# /src/AppBundle/Resources/views/Footer #}
+
+{% extends "GebsUserBundle::layout.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <header class="text-center">
+                <h1>Contact</h1>
+                <h3>Vous voulez me laisser un message ?</h3>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_start(form) }}
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.subject) }}
+            {{ form_row(form.body) }}
+
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

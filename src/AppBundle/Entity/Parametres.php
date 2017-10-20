@@ -36,28 +36,28 @@ class Parametres
      *
      * @ORM\Column(name="revoir", type="integer")
      */
-    private $revoir;
+    private $revoir = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="difficile", type="integer")
      */
-    private $difficile;
+    private $difficile = 1;
 
     /**
      * @var int
      *
      * @ORM\Column(name="bien", type="integer")
      */
-    private $bien;
+    private $bien = 3;
 
     /**
      * @var int
      *
      * @ORM\Column(name="parfait", type="integer")
      */
-    private $parfait;
+    private $parfait = 5;
 
 
     /**
