@@ -5,6 +5,12 @@
 {% block fos_user_content %}
 
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Gestion des utilisateurs</h1>
+                <hr>
+            </div>
+        </div>
     <div class="row">
         <div class="col-md-12">
             <table class="table">
@@ -20,7 +26,10 @@
                             {{ role }},
                         {% endfor %}
                         </td>
-                        <td></td>
+                        <td>
+                            <a href="#"><span title="supprimer" class="glyphicon glyphicon-trash"></span> </a>
+                            <a href="#"><span title="bloquer" class="glyphicon glyphicon-thumbs-down"></span></a>
+                        </td>
                     </tr>
                 {% endfor %}
 
