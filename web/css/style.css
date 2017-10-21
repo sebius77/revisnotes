@@ -204,3 +204,11 @@ ul.ui-autocomplete {
     z-index: 5000;
     cursor: pointer;
 }
+
+.glyphicon-thumbs-down {
+    color: red;
+}
+
+.glyphicon-thumbs-up {
+    color: green;
+}

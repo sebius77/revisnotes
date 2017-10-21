@@ -11,6 +11,15 @@
                 <hr>
             </div>
         </div>
+
+
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
     <div class="row">
         <div class="col-md-12">
             <table class="table">
@@ -27,8 +36,28 @@
                         {% endfor %}
                         </td>
                         <td>
-                            <a href="#"><span title="supprimer" class="glyphicon glyphicon-trash"></span> </a>
-                            <a href="#"><span title="bloquer" class="glyphicon glyphicon-thumbs-down"></span></a>
+                            <a href="#"><span title="supprimer" class="glyphicon glyphicon-trash"
+                                data-toggle="modal" data-target="#modal-{{ user.id }}"></span> </a>
+
+                            <div class="modal fade col-md-4" id="modal-{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                        <h4 class="modal-title" id="myModalLabel">Êtes-vous sûr de vouloir supprimer cet utilisateur ?</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true"
+                                                id="delButton" value="{{ user.id }}">Oui</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if user.enabled == true %}
+                                <a href="#"><span title="bloquer" class="glyphicon glyphicon-thumbs-down"></span></a>
+                            {% else %}
+                                <a href="#"><span title="activer" class="glyphicon glyphicon-thumbs-up"></span></a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
