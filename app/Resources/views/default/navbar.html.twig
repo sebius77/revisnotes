@@ -17,9 +17,9 @@
 
             <ul class="nav navbar-nav">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a class="glyphicon glyphicon-home" href="{{ path('mesNotes') }}"> Mes notes</a></li>
-                    <li><a class="glyphicon glyphicon-folder-close" href="{{ path('AReviser') }}">Réviser</a></li>
-                    <li><a class="glyphicon glyphicon-edit" href="{{ path('Ajouter') }}">Ajouter</a></li>
+                    <li><a href="{{ path('mesNotes') }}"><span><i class="material-icons">description</i>Mes notes</span></a></li>
+                    <li><a href="{{ path('AReviser') }}"><span><i class="material-icons">history</i>Réviser</a></li>
+                    <li><a href="{{ path('Ajouter') }}"><span><i class="material-icons">note_add</i>Ajouter</a></li>
 
                 {% endif %}
             </ul>
@@ -40,22 +40,25 @@
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="dropdown">
                             <a href="#" title="administration" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-cog"></span><span class="caret"></span></a>
+                                <i class="material-icons">administration_settings</i><span class="caret">
+                                </span>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('adminUsers') }}">Gestion des utilisateurs</a></li>
                             </ul>
                         </li>
                     {% endif %}
                     <li class="dropdown">
-                        <a href="#" title="Profil" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.username }}
-                            <span class="glyphicon glyphicon-user"></span><span class="caret"></span></a>
+                        <a href="#" title="{{ app.user.username }}" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="material-icons">account_circle</i><span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Vos paramètres</a></li>
                         </ul>
 
                     </li>
-                    <li><a class="glyphicon glyphicon-log-out" href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                    <li><a title=" {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}"
+                           href="{{ path('fos_user_security_logout') }}"><span><i class="material-icons">exit_to_app</i>
+                           </a></span></li>
                 {% else %}
                     <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                     <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
