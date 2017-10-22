@@ -22,7 +22,7 @@ class NoteType extends AbstractType
             ->add('enonce',                     TextareaType::class)
             ->add('solution',                   TextareaType::class)
             ->add('categorie',                  EntityType::class, array(
-                'class'    => 'AppBundle:Categorie',
+                'class'    => 'TwigBundle:Categorie',
                 'choice_label'     => 'nom',
                 'multiple'  => false,
                 'placeholder' => 'Choisissez une catégorie'

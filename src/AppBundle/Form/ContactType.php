@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Form/ContactType.php
+// src/TwigBundle/Form/ContactType.php
 
 namespace AppBundle\Form;
 

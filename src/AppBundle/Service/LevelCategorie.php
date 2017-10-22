@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Service/LevelCategorie.php
+// src/TwigBundle/Service/LevelCategorie.php
 
 
 namespace AppBundle\Service;
@@ -30,7 +30,7 @@ class LevelCategorie
         if($idParent !== null)
         {
             // On récupère le repository de l'entité catégorie
-            $repository = $this->getEm()->getRepository('AppBundle:Categorie');
+            $repository = $this->getEm()->getRepository('TwigBundle:Categorie');
 
             // On récupère la catégorie mère
             $catParent = $repository->find($idParent);

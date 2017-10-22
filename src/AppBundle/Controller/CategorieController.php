@@ -27,7 +27,7 @@ class CategorieController extends Controller
 
 
         // récupération de la catégorie
-        $categorie = $em->getRepository('AppBundle:Categorie')
+        $categorie = $em->getRepository('TwigBundle:Categorie')
             ->find($id);
 
 
@@ -35,7 +35,7 @@ class CategorieController extends Controller
 
 
         // replace this example code with whatever you need
-        return $this->render('AppBundle:Default:categorie.html.twig', array(
+        return $this->render('TwigBundle:Default:categorie.html.twig', array(
             'categorie' => $categorie,
         ));
     }
@@ -53,7 +53,7 @@ class CategorieController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             // récupération de la catégorie
-            $categorie = $em->getRepository('AppBundle:Categorie')
+            $categorie = $em->getRepository('TwigBundle:Categorie')
                 ->find($id);
 
             $em->remove($categorie);
@@ -80,7 +80,7 @@ class CategorieController extends Controller
         if($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
 
-            $categorie = $em->getRepository('AppBundle:Categorie')
+            $categorie = $em->getRepository('TwigBundle:Categorie')
                 ->find($id);
             $groupement = $categorie->getGroupement();
             $level = $categorie->getNiveau();
@@ -89,7 +89,7 @@ class CategorieController extends Controller
             $idUser = $user->getId();
 
             // récupération de la catégorie
-            $categories = $em->getRepository('AppBundle:Categorie')
+            $categories = $em->getRepository('TwigBundle:Categorie')
                 ->findGroupementCat($groupement,$level,$idUser);
 
 
@@ -120,7 +120,7 @@ class CategorieController extends Controller
         if($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
 
-            $categorie = $em->getRepository('AppBundle:Categorie')
+            $categorie = $em->getRepository('TwigBundle:Categorie')
                 ->find($id);
             $groupement = $categorie->getGroupement();
             $level = $categorie->getNiveau();
@@ -130,7 +130,7 @@ class CategorieController extends Controller
 
 
             // récupération de la catégorie
-            $categories = $em->getRepository('AppBundle:Categorie')
+            $categories = $em->getRepository('TwigBundle:Categorie')
                 ->findGroupementCat($groupement, $level, $idUser);
 
 

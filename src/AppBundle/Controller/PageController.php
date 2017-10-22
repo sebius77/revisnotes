@@ -106,7 +106,7 @@ class PageController extends Controller
                 // récupération de la catégorie mère
                 $em = $this->getDoctrine()->getManager();
 
-                $catParent = $em->getRepository('AppBundle:Categorie')
+                $catParent = $em->getRepository('TwigBundle:Categorie')
                     ->find($idParent);
 
 
@@ -140,7 +140,7 @@ class PageController extends Controller
 
 
         // replace this example code with whatever you need
-        return $this->render('AppBundle:Default:ajouter.html.twig', array(
+        return $this->render('TwigBundle:Default:ajouter.html.twig', array(
             'form' => $form->createView(),
             'formCategorie' => $formCategorie->createView(),
         ));
@@ -163,7 +163,7 @@ class PageController extends Controller
             $user = $this->getUser();
 
             // récupération de toutes les catégories via un repository
-            //$repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:Categorie');
+            //$repository = $this->getDoctrine()->getManager()->getRepository('TwigBundle:Categorie');
 
             // On récupère toutes les catégories
             //$listCategories = $repository->findAll();

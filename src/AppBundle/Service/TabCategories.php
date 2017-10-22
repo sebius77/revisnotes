@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Service/tabCategories.php
+// src/TwigBundle/Service/tabCategories.php
 
 
 namespace AppBundle\Service;

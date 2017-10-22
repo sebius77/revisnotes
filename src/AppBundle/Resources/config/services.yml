@@ -2,16 +2,16 @@
 
 services:
     file_uploader:
-        class:  AppBundle\Service\FileUploader
+        class:  TwigBundle\Service\FileUploader
         arguments:
             $targetDir: '%images_directory%'
 
 
     tab_categories:
-        class:  AppBundle\Service\TabCategories
+        class:  TwigBundle\Service\TabCategories
 
 
     level_categorie:
-        class:  AppBundle\Service\LevelCategorie
+        class:  TwigBundle\Service\LevelCategorie
         arguments:
             - "@doctrine.orm.entity_manager"

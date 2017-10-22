@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Note
  *
  * @ORM\Table(name="note")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\NoteRepository")
+ * @ORM\Entity(repositoryClass="TwigBundle\Repository\NoteRepository")
  */
 class Note
 {
