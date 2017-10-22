@@ -4,7 +4,11 @@
     "type": "project",
     "autoload": {
         "psr-4": {
+<<<<<<< HEAD
             "" : "src/"
+=======
+            "": "src"
+>>>>>>> 3221c1eae5a3dfdaa5bde42483e0e3f6f1a9c251
 
         },
         "classmap": [
