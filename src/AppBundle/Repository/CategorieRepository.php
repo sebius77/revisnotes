@@ -38,7 +38,7 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
             );
         }
 
-        $query = $this->_em->createQuery('SELECT c FROM TwigBundle:Categorie c JOIN c.user u WHERE u.id = :id AND
+        $query = $this->_em->createQuery('SELECT c FROM AppBundle:Categorie c JOIN c.user u WHERE u.id = :id AND
         c.idParent IS NULL');
         $query->setParameter('id', $id);
 
@@ -66,7 +66,7 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findGroupementCat($groupement, $level, $id)
     {
-        $query = $this->_em->createQuery('SELECT c FROM TwigBundle:Categorie c JOIN c.user u WHERE u.id = :id 
+        $query = $this->_em->createQuery('SELECT c FROM AppBundle:Categorie c JOIN c.user u WHERE u.id = :id 
         AND c.groupement = :groupement AND c.niveau >= :level');
         $query->setParameter('groupement', $groupement);
         $query->setParameter('level', $level);

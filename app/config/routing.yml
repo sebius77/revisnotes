@@ -5,7 +5,7 @@ rn_user:
     prefix:   /
 
 app:
-    resource: '@TwigBundle/Controller/'
+    resource: '@AppBundle/Controller/'
     type: annotation
 
 

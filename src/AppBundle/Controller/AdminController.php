@@ -22,7 +22,7 @@ class AdminController extends Controller
         $users = $em->getRepository('GebsUserBundle:User')
             ->findAll();
 
-        return $this->render('TwigBundle:Admin:admin.html.twig', array(
+        return $this->render('AppBundle:Admin:admin.html.twig', array(
             'users' => $users,
         ));
 

@@ -25,13 +25,13 @@ class User extends BaseUser
 
     /**
      * @var object
-     * @ORM\OneToMany(targetEntity="\TwigBundle\Entity\Categorie", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Categorie", mappedBy="user")
      */
     protected $categories;
 
     /**
      * @var object
-     * @ORM\OneToOne(targetEntity="\TwigBundle\Entity\Parametres", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="\AppBundle\Entity\Parametres", cascade={"persist"})
      */
     private $parametres;
 

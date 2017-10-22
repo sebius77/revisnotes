@@ -28,12 +28,12 @@ class NoteController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $listCategories = $em->getRepository('TwigBundle:Categorie')
+        $listCategories = $em->getRepository('AppBundle:Categorie')
             ->findAllUserCatTrie($page, 9,$id);
 
 
         // 4) La vue s'occupe de parser les catégories et afficher les catégories Mères
-        return $this->render('TwigBundle:Default:mesNotes.html.twig', array(
+        return $this->render('AppBundle:Default:mesNotes.html.twig', array(
             'listCategories' => $listCategories,
             'page'  => $page,
             'nombrePage' => ceil(count($listCategories)/9)
@@ -51,10 +51,10 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // récupération de la catégorie
-        $note = $em->getRepository('TwigBundle:Note')
+        $note = $em->getRepository('AppBundle:Note')
             ->find($id);
 
-        return $this->render('TwigBundle:Default:read.html.twig', array(
+        return $this->render('AppBundle:Default:read.html.twig', array(
             'note' => $note,
         ));
     }
@@ -70,7 +70,7 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // récupération de la catégorie
-        $note = $em->getRepository('TwigBundle:Note')
+        $note = $em->getRepository('AppBundle:Note')
             ->find($id);
 
 
@@ -108,7 +108,7 @@ class NoteController extends Controller
         }
 
 
-        return $this->render('TwigBundle:Default:ajouter.html.twig', array(
+        return $this->render('AppBundle:Default:ajouter.html.twig', array(
             'catId' => $catId,
             'form' => $form->createView(),
             'formCategorie' => $formCategorie->createView(),
@@ -130,7 +130,7 @@ class NoteController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             // récupération de la catégorie
-            $note = $em->getRepository('TwigBundle:Note')
+            $note = $em->getRepository('AppBundle:Note')
                 ->find($id);
 
             $em->remove($note);
@@ -159,12 +159,12 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         // récupération de la note
-        $note = $em->getRepository('TwigBundle:Note')
+        $note = $em->getRepository('AppBundle:Note')
             ->findLastNote($id);
 
 
 
-        return $this->render('TwigBundle:Default:aReviser.html.twig', array(
+        return $this->render('AppBundle:Default:aReviser.html.twig', array(
             'note' => $note,
         ));
     }
@@ -187,7 +187,7 @@ class NoteController extends Controller
         $em = $this->getDoctrine()->getManager();
 
 
-        $note = $em->getRepository('TwigBundle:Note')
+        $note = $em->getRepository('AppBundle:Note')
             ->find($id);
 
 
@@ -250,7 +250,7 @@ class NoteController extends Controller
             $idUser = $user->getId();
 
 
-            $notesUser = $em->getRepository('TwigBundle:Note')
+            $notesUser = $em->getRepository('AppBundle:Note')
                 ->findAllByUser($idUser, $term);
 
 
@@ -279,7 +279,7 @@ class NoteController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             // Vérification si la recherche existe
-            $note = $em->getRepository('TwigBundle:Note')
+            $note = $em->getRepository('AppBundle:Note')
                 ->find($id);
 
 

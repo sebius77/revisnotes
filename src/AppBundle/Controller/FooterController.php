@@ -42,7 +42,7 @@ class FooterController extends Controller
 
             $mailer->send($message);
 
-           // return $this->redirectToRoute('TwigBundle:Footer:contact.html.twig');
+           // return $this->redirectToRoute('AppBundle:Footer:contact.html.twig');
         }
 
 
@@ -51,7 +51,7 @@ class FooterController extends Controller
 
 
 
-        return $this->render('TwigBundle:Footer:contact.html.twig', array(
+        return $this->render('AppBundle:Footer:contact.html.twig', array(
             'form' => $form->createView(),
         ));
     }
