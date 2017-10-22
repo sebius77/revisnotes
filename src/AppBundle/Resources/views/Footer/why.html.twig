@@ -1,0 +1,45 @@
+{# /src/AppBundle/Resources/views/Footer #}
+
+{% extends "GebsUserBundle::layout.html.twig" %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <header class="text-center">
+                    <h1>Pourquoi ce site ?</h1>
+                    <hr>
+                </header>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+
+                <p>
+                    L'application Revisnotes a pour objectif d'apporter une aide dans la révision de leçon d'un
+                    domaine quelconque. De l'apprentissage des tables de multiplication à l'apprentissage d'une langue,
+                    de la révision d'un examen ou encore pour l'apprentissage d'un langage informatique.
+                    Révisnotes peut servir à de nombreuses personnes.
+                </p>
+                <p>
+                    Revisnotes se veut simple d'utilisation avec un code source ouvert à tous et disponible sur la plateforme
+                    <a href="https://github.com/sebius77/revisnotes"><strong>Github</strong></a>.
+                </p>
+                <p>
+                    Aujourd'hui, les bases sont posées mais l'application est destinée à évoluée. Beaucoup d'autres fonctionnalités
+                    peuvent être intégrées.
+                </p>
+                <p>
+                    Si vous êtes intéressé pour participer à l'évolution d'un projet libre et destiné aux plus grand nombre,
+                    vous pouvez me contacter via <a href="{{ path('contact') }}"><strong>le formulaire de contact</strong></a>.
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

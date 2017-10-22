@@ -19,6 +19,8 @@ class FooterController extends Controller
 
     /**
      * @Route("contact", name="contact")
+     * Méthode permettant l'accès au formulaire de contact
+     * et l'envoi d'un message
      */
     public function contactAction(Request $request, \Swift_Mailer $mailer)
     {
@@ -43,17 +45,27 @@ class FooterController extends Controller
             $mailer->send($message);
 
            // return $this->redirectToRoute('AppBundle:Footer:contact.html.twig');
+
+            // prévoir un message FlashBag pour l'envoi du message
         }
-
-
-
-
-
 
 
         return $this->render('AppBundle:Footer:contact.html.twig', array(
             'form' => $form->createView(),
         ));
     }
+
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("why", name="why")
+     */
+    public function whyAction()
+    {
+        return $this->render('AppBundle:Footer:why.html.twig');
+    }
+
+
+
 
 }
