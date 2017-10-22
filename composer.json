@@ -4,8 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle",
-            "GebsUserBundle\\": "src/Gebs/UserBundle"
+            "" : "src/"
 
         },
         "classmap": [
