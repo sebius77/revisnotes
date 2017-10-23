@@ -50,11 +50,24 @@ $(document).ready(function() {
             processData: false,
             data: formdata,
             success: function(reponse) {
-                $catMessage.show();
+                console.log(reponse);
+                if(reponse.message === true) {
+                    $catMessage.append('<div class="alert alert-success">La catégorie a été ajoutée avec succès !!</div>');
+                    $catMessage.show();
+                } else if (reponse.message === 1) {
+                    $catMessage.append('<div class="alert alert-danger">Le fichier n\'est pas au bon format !!</div>');
+                    $catMessage.show();
+                } else if (reponse === 2){
+                    $catMessage.append('<div class="alert alert-danger">La taille de votre fichier est trop grande !!</div>');
+                    $catMessage.show();
+                }
+
                 $catMessage.fadeOut(5000);
+                $catMessage.html();
                 refresh();
 
             }
+
         });
 
     });

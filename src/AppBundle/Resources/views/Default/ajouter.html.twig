@@ -6,36 +6,32 @@
 
 
     {# Div permettant l'affichage des messages JQuery #}
-    {# A modifier pour éviter le problème d'affichage lors du chargement de la page#}
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div id="catMessage" class="alert alert-success">La catégorie a été ajoutée avec succès!!</div></div>
+            <div id="catMessage" class="col-md-12">
+                    {# Message lors de l'ajout d'une note #}
+                    {% for message in app.flashes('notice') %}
+                        {{ message }}
+                    {% endfor %}
             </div>
         </div>
+
     </div>
 
+        {% if catId is defined %}
+            <input id="catEdit" type="hidden" value="{{ catId }}">
+        {% endif %}
 
+        {# Formulaire d'ajout d'une note #}
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert-success">
+                    {{ form_errors(form) }}
+                </div>
 
-        {# Message lors de l'ajout d'une note #}
-        {# Modifier pour avoir un affichage bootstrap #}
-        {% for message in app.flashes('notice') %}
-                {{ message }}
-        {% endfor %}
-
-
-
-    {% if catId is defined %}
-        <input id="catEdit" type="hidden" value="{{ catId }}">
-    {% endif %}
-
-    {# Formulaire d'ajout d'une note #}
-    {{ form_start(form) }}
-    <div class="row">
-        <div class="col-md-12">
-            {{ form_errors(form) }}
-        </div>
-            <div class="col-md-offset-3 col-md-3">
+            </div>
+            <div class="col-md-offset-3 col-md-4">
                 {{ form_row(form.titre)}}
             </div>
 
@@ -45,32 +41,34 @@
                 <a id="addCategory" href="#" title="ajouter une catégorie"
                    class="btn btn-primary glyphicon glyphicon-plus"></a>
             </div>
-        <div id="containerForm" class="col-md-3">
+            <div id="containerForm" class="col-md-3">
+
+            </div>
 
         </div>
 
-    </div>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                {{ form_row(form.enonce, {'attr': {'class': 'tinymce' }}) }}
+                {{ form_row(form.solution, {'attr': {'class': 'tinymce'}}) }}
 
-    <div class="row">
-        <div class="col-md-offset-3 col-md-6">
-            {{ form_row(form.enonce, {'attr': {'class': 'tinymce' }}) }}
-            {{ form_row(form.solution, {'attr': {'class': 'tinymce'}}) }}
+            </div>
 
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-md-offset-3 col-md-3">
-            {{ form_row(form.Ajouter) }}
+        <div class="row">
+            <div class="col-md-offset-3 col-md-3">
+                {{ form_row(form.Ajouter) }}
+            </div>
         </div>
-    </div>
 
-    {{ form_end(form) }}
+        {{ form_end(form) }}
 
 
 
     {# Formulaire pour l'ajout d'une catégorie #}
+    {# Prévoir une translation de droite vers la gauche #}
+    {# et de gauche à droite pour le retour #}
     <div id="formCategorie">
         {{ include('AppBundle:Formulaires:formCategorie.html.twig') }}
     </div>
@@ -78,12 +76,7 @@
 {% endblock fos_user_content %}
 
 {% block javascripts %}
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.js"
-            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/editNote.js') }}"></script>
+         {{ parent() }}
     <script src="{{ asset('js/refreshList.js') }}"></script>
     <script src="{{ asset('js/addCategory.js') }}"></script>
 
@@ -92,6 +85,5 @@
         var refreshList = "{{ path('refreshList') }}";
     </script>
 
-    {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 
 {% endblock %}

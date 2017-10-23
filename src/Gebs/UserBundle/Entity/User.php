@@ -25,7 +25,7 @@ class User extends BaseUser
 
     /**
      * @var object
-     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Categorie", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\Categorie", mappedBy="user", cascade={"remove", "persist"})
      */
     protected $categories;
 

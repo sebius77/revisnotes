@@ -10,14 +10,26 @@
                 <h1 class="text-center">Gestion des utilisateurs</h1>
                 <hr>
             </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% for message in app.flashes('notice') %}
+                    <div class="flash-notice">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
+        <div class="row">
+            <div class="col_md-12">
+                <div id="catMessage">
 
-        {% for message in app.flashes('notice') %}
-            <div class="flash-notice">
-                {{ message }}
+                </div>
             </div>
-        {% endfor %}
+        </div>
+
 
 
     <div class="row">
@@ -48,15 +60,15 @@
                                     </div>
                                     <div class="modal-body">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true"
-                                                id="delButton" value="{{ user.id }}">Oui</button>
+                                                id="delButtonUser" value="{{ user.id }}">Oui</button>
                                     </div>
                                 </div>
                             </div>
 
                             {% if user.enabled == true %}
-                                <a href="#"><span title="bloquer" class="glyphicon glyphicon-thumbs-down"></span></a>
+                                <a href="{{ path('blockUser', {"id":  user.id }) }}"><span title="bloquer" class="glyphicon glyphicon-thumbs-down"></span></a>
                             {% else %}
-                                <a href="#"><span title="activer" class="glyphicon glyphicon-thumbs-up"></span></a>
+                                <a href="{{ path('enableUser', {"id":  user.id }) }}"><span title="activer" class="glyphicon glyphicon-thumbs-up"></span></a>
                             {% endif %}
                         </td>
                     </tr>
@@ -70,3 +82,9 @@
 
 
 {% endblock fos_user_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/delUser.js') }}"></script>
+
+{% endblock %}
