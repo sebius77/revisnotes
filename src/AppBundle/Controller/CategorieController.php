@@ -16,7 +16,7 @@ class CategorieController extends Controller
     /**
      * @Route("categorie/{id}", name="categorie", requirements={"id" = "\d+"})
      */
-    public function CategorieAction($id)
+    public function categorieAction($id)
     {
 
         // Vérification à prévoir sur l'id de la catégorie
@@ -113,7 +113,7 @@ class CategorieController extends Controller
     /**
      * @Route("disableCat/{id}", name="disableCat", requirements={"id" = "\d+"})
      */
-    public function DisableCatAction(Request $request, $id)
+    public function disableCatAction(Request $request, $id)
     {
 
 

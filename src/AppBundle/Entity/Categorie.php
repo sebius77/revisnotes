@@ -317,7 +317,7 @@ class Categorie
         ];
 
 
-        if($this->getChildren() != null) {
+        if($this->getChildren() !== null) {
             foreach($this->getChildren() as $children)
             {
                 $tab['children'][]= $children->to_json_encode();
