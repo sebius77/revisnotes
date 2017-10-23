@@ -23,14 +23,16 @@ $(document).ready(function() {
     $addCategory.click(function(e) {
         e.preventDefault();
         $('#containerForm').append($form);
-        $form.toggle("slide");
+        //$form.toggle("slide");
+        $form.show('slide', { direction: 'right' }, 200);
     });
 
 
     // Dans le cas où l'on clique sur le bouton delButton, on cache le formulaire
     $delButton.click(function(e) {
         e.preventDefault();
-        $form.toggle("slide");
+        //$form.toggle("slide");
+        $form.hide('slide', { direction: 'right' }, 200);
     });
 
 
