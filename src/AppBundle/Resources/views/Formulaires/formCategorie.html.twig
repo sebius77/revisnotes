@@ -1,12 +1,27 @@
 {# /src/AppBundle/Resources/views/Formulaires/formCategorie.html.twig #}
 
-Catégorie Mère :<div id="idMere"> </div>
 
-{{ form_start(formCategorie, {'attr': {'id': 'formCat' }}) }}
-    {{ form_row(formCategorie.nom) }}
-    {{ form_row(formCategorie.image) }}
-    {{ form_widget(formCategorie.Ajout, {'attr': {'class': 'glyphicon glyphicon-floppy-saved'}}) }}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Categorie
+    </div>
+    <div class="panel-body">
+        Catégorie Mère :<span id="idMere"> </span>
 
-{{ form_end(formCategorie) }}
+        {{ form_start(formCategorie, {'attr': {'id': 'formCat'}}) }}
+        {{ form_row(formCategorie.nom) }}
+        {{ form_row(formCategorie.image) }}
+        {{ form_row(formCategorie.description) }}
+        {{ form_widget(formCategorie.Ajout) }}
 
-<a href="{{ path('Ajouter') }}" id="delButton" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span></a>
+        {{ form_end(formCategorie) }}
+        <br>
+
+        <a href="{{ path('Ajouter') }}" id="delButton" class="btn btn-danger">
+            <i class="material-icons">arrow_forward</i>
+        </a>
+
+
+    </div>
+
+</div>

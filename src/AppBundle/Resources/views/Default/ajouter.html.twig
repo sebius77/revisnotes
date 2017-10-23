@@ -5,6 +5,8 @@
 {% block fos_user_content %}
 
 
+    {# Div permettant l'affichage des messages JQuery #}
+    {# A modifier pour éviter le problème d'affichage lors du chargement de la page#}
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -15,10 +17,10 @@
 
 
 
+        {# Message lors de l'ajout d'une note #}
+        {# Modifier pour avoir un affichage bootstrap #}
         {% for message in app.flashes('notice') %}
-            <div class="alert alert-success">
                 {{ message }}
-            </div>
         {% endfor %}
 
 
@@ -29,9 +31,6 @@
 
     {# Formulaire d'ajout d'une note #}
     {{ form_start(form) }}
-
-
-
     <div class="row">
         <div class="col-md-12">
             {{ form_errors(form) }}
@@ -68,6 +67,8 @@
     </div>
 
     {{ form_end(form) }}
+
+
 
     {# Formulaire pour l'ajout d'une catégorie #}
     <div id="formCategorie">
