@@ -6,8 +6,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-success">
-            <div class="panel-heading" data-toggle="collapse" data-target="#content-{{ categorie.id }}">
-                <h3>{{categorie.nom }}</h3>
+            <div class="panel-heading">
+                <h3>
+                    {{categorie.nom }}
+                    <button class="pull-right" data-toggle="collapse" data-target="#content-{{ categorie.id }}"><i class="material-icons">arrow_downward</i></button>
+                </h3>
             </div>
             <div id="content-{{ categorie.id }}" class="panel-body collapse">
                 {% for note in categorie.notes %}
