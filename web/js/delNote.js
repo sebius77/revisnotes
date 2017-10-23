@@ -3,7 +3,7 @@
 // Dans le cas ou l'on clique sur le bouton d'ajout en Bdd, on exécute une requête Ajax.
 $('#delButton').click(function(e) {
 
-    var deleteNote = "http://localhost/revisnotes/web/app_dev.php/deleteNote/" + $(this).val();
+    var deleteNote = "http://sebastiengaudin.alwaysdata.net/deleteNote/" + $(this).val();
     //console.log($(this).val());
 
     $.get(deleteNote , function(reponse){

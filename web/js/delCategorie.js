@@ -4,7 +4,7 @@
 $(':button').click(function() {
 
 
-    var deleteNote = "http://localhost/revisnotes/web/app_dev.php/deleteCat/" + $(this).val();
+    var deleteNote = "http://sebastiengaudin.alwaysdata.net/deleteCat/" + $(this).val();
     //console.log($(this).val());
 
     $.get(deleteNote , function(reponse){

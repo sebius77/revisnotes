@@ -177,7 +177,7 @@ class NoteController extends Controller
      * Cette méthode permet au clic de modifier la date de révision de la note
      * @Route("autoEval/{id}/{bouton}", name="autoEval")
      */
-    public function autoEval($id, $bouton)
+    public function autoEvalAction($id, $bouton)
     {
         $user = $this->getUser();
         $idUser = $user->getId();

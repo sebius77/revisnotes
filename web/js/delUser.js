@@ -4,7 +4,7 @@
 $('#delButtonUser').click(function() {
 
 
-    var deleteUser = "http://localhost/revisnotes/web/app_dev.php/admin/deleteUser/" + $(this).val();
+    var deleteUser = "http://sebastiengaudin.alwaysdata.net/admin/deleteUser/" + $(this).val();
 
 
     $.get(deleteUser , function(reponse){
