@@ -83,17 +83,20 @@ body {
     margin-top: 26px;
 }
 
+
 #formCategorie {
     position: absolute;
     right: 0;
-   border: 1px solid;
-    width: 300px;
-    height: 600px;
-    z-index: 500;
-    background-color: #19D4FF;
-    color: white;
-    font-weight: bold;
+
 }
+
+
+#formCategorie .panel-heading{
+    background-color: #458DA3;
+    color: white;
+}
+
+
 
 
 
@@ -114,28 +117,16 @@ body {
 
 
 
+/*******************************************
+*               Divers                     *
+*                                          *
+********************************************/
+
 .panel {
     box-shadow: 8px 8px 0px #75C2D4;
 }
 
-/*
-.btn {
-    display: block;
-    width: 150px;
-    margin: auto;
-    padding-bottom: 5px;
-    color: white;
 
-    background-color: #75C2D4;
-    box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
-
-}
-*/
-
-
-.signature {
-
-}
 
 #footer a {
     color: white;
@@ -177,12 +168,6 @@ option[level="1"]
 }
 
 
-
-#appbundle_categorie_nom
-{
-    margin-left: 70px;
-    width: 150px;
-}
 
 .ih-item {
     margin-bottom: 50px;

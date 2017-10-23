@@ -21,6 +21,11 @@ class LevelCategorie
     }
 
 
+    /**
+     * @param $idParent
+     * @return int|null
+     * Méthode permettant de donner le niveau de la catégorie créé
+     */
     public function findLevel($idParent)
     {
         $level = 1;

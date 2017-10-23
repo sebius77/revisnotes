@@ -1,10 +1,7 @@
 {% extends "GebsUserBundle::layout.html.twig" %}
 
 {% block stylesheets %}
-    <!-- Le styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  {{ parent() }}
     <link rel="stylesheet" href="{{ asset('ihover/bower_components/ihover/src/ihover.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mesNotes.css') }}">
 {% endblock %}
@@ -15,7 +12,6 @@
     <div class="container">
 
         <div id="catMessage"></div>
-
 
         <div class="row">
             {% for categorie in listCategories %}
@@ -70,12 +66,7 @@
 
                             </div>
                         </div>
-
-
                     </div>
-
-
-
 
             {% endfor %}
         </div>
@@ -97,11 +88,7 @@
 {% endblock fos_user_content %}
 
 {% block javascripts %}
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.js"
-            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {{ parent() }}
     <script src="{{ asset('js/delCategorie.js') }}"></script>
     <script src="{{ asset('js/reviseCat.js') }}"></script>
 

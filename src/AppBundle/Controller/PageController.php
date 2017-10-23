@@ -22,11 +22,11 @@ class PageController extends Controller
      */
     public function ajouteAction(Request $request)
     {
-        // instanciation de l'objet Note
+        // instanciation de l'objet Note et création du formulaire
         $note = new Note();
         $form = $this->get('form.factory')->create(NoteType::class, $note);
 
-        // instanciation de l'objet Categorie
+        // instanciation de l'objet Categorie et création du formulaire
         $categorie = new Categorie();
         $formCategorie = $this->get('form.factory')->create(CategorieType::class);
 
@@ -38,7 +38,9 @@ class PageController extends Controller
         $username = $user->getUsername();
 
 
-        // Lorsque le formulaire est validé
+
+
+        // Lorsque le formulaire est validé on enregistre en base de données
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -50,6 +52,10 @@ class PageController extends Controller
 
             return $this->redirectToRoute('Ajouter');
         }
+
+
+
+
 
         // Traitement pour l'ajout des catégories en Ajax
         if($request->isXmlHttpRequest()) {
@@ -85,18 +91,29 @@ class PageController extends Controller
 
                 // Dans le cas ou l'upload à fonctionner
                 // On enregistre la catégorie en base de données
-                if ($upload) {
+                if ($upload === true) {
 
                     $categorie->setImage($fileUploader->getFileName());
 
 
                     //return new JsonResponse(array('message' => $upload, 200));
 
+
+                } else if ($upload === 1) {
+                    // Cas ou le type du fichier est mauvais
+                    return new JsonResponse(array('message' => 1, 50));
+                } else if ($upload === 2) {
+                    // Cas ou la taille du fichier est supérieur à 400Ko
+                    return new JsonResponse(array('message' => 2, 60));
                 } else {
-                    // Prévoir un message au cas ou l'upload n'aurait pas fonctionné
-                    return new JsonResponse(array('message' => 'false', 400));
+                    // Autres cas
+                    return new JsonResponse(array('message' => false, 70));
                 }
 
+
+
+
+               // Si la catégorie n'est pas mère (id_parent = null)
             } else {
                 // On récupère le level de la catégorie Parent
                 $levelCategorie = $this->container->get('level_categorie');
@@ -116,6 +133,9 @@ class PageController extends Controller
 
                 $categorie->setParent($catParent);
             }
+
+
+
 
             // On modifie le nom de la catégorie
             $categorie->setNom($username . '_' . $nom);
@@ -139,12 +159,19 @@ class PageController extends Controller
         }
 
 
+
+
+
+
+
+
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:ajouter.html.twig', array(
             'form' => $form->createView(),
             'formCategorie' => $formCategorie->createView(),
         ));
     }
+
 
 
 
