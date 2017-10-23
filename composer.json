@@ -2,6 +2,7 @@
     "name": "gebs.dev/revisnotes",
     "license": "GPL-3.0",
     "type": "project",
+    "description": "Une application de prises de notes",
     "autoload": {
         "psr-4": {
             "AppBundle\\": "src/AppBundle",
