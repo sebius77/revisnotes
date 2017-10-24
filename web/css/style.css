@@ -101,7 +101,9 @@ body {
     height: 300px;
 }
 
-
+.panel-desc {
+    height: 100px;
+}
 
 
 
