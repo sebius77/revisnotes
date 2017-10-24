@@ -36,8 +36,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-danger">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#note-{{ note.id }}">
-                        <H2>Solution</H2>
+                    <div class="panel-heading">
+                        <H2>
+                            Solution
+                            <button class="pull-right" data-toggle="collapse" data-target="#note-{{ note.id }}"><i class="material-icons">arrow_downward</i></button>
+                        </H2>
                     </div>
                     <div id="note-{{ note.id }}" class="panel-body collapse">
                         {{ note.solution|raw }}
