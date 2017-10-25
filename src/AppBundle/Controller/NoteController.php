@@ -18,6 +18,7 @@ class NoteController extends Controller
 
     /**
      * @Route("mesNotes/{page}", name="mesNotes", requirements={"page" = "\d+"}, defaults={"page" = 1})
+     * Page mes notes, Affiche toutes le catégories avec la pagination
      */
     public function indexAction($page)
     {
@@ -28,6 +29,7 @@ class NoteController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
+        // Récupération des catégories en fonction de la page et l'id utilisateur
         $listCategories = $em->getRepository('AppBundle:Categorie')
             ->findAllUserCatTrie($page, 9,$id);
 
@@ -44,9 +46,12 @@ class NoteController extends Controller
 
     /**
      * @Route("read/{id}", name="read", requirements={"id" = "\d+"})
+     * Méthode permettant l'affichage d'une note
      */
     public function readAction($id)
     {
+
+        // Prévoir la vérification de la note en fonction de l'utilisateur
 
         $em = $this->getDoctrine()->getManager();
 
@@ -67,6 +72,9 @@ class NoteController extends Controller
      */
     public function editAction(Request $request,$id)
     {
+
+        // Vérification de l'appartenance de la note
+
         $em = $this->getDoctrine()->getManager();
 
         // récupération de la catégorie
@@ -114,8 +122,9 @@ class NoteController extends Controller
             'formCategorie' => $formCategorie->createView(),
         ));
 
-
     }
+
+
 
 
     /**
@@ -124,6 +133,7 @@ class NoteController extends Controller
     public function deleteAction(Request $request, $id)
     {
 
+        // Vérification de l'apartencance de la note
 
         if($request->isXmlHttpRequest()) {
 
@@ -149,6 +159,7 @@ class NoteController extends Controller
 
     /**
      * @Route("aReviser", name="AReviser")
+     * Méthode permettant l'affichage de la note à réviser en fonction de la date la plus lointaine
      */
     public function reviseAction()
     {
@@ -219,8 +230,6 @@ class NoteController extends Controller
                 $newDate = false;
         }
 
-       // die(var_dump($newDate));
-
         $note->setDateRevision($newDate);
 
         $em->persist($note);
@@ -285,16 +294,50 @@ class NoteController extends Controller
 
             if ($note){
                 return new JsonResponse(array('message' => true, 200));
-            } else
+            }
+
+        }
+        return new JsonResponse(array('message' => false, 400));
+
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @Route("countNote", name="countNote")
+     * Méthode permettant de récupérer le nombre de note à réviser
+     */
+    public function nbNoteAreviser(Request $request)
+    {
+
+        if($request->isXmlHttpRequest())
+        {
+
+            $user = $this->getUser();
+            $idUser = $user->getId();
+
+            // Récupérer le repository des notes
+            $em = $this->getDoctrine()->getManager();
+
+            $nbNote = $em->getRepository('AppBundle:Note')
+                ->findAllNoteAreviser($idUser);
+
+            $count = count($nbNote);
+
+
+            if($nbNote)
             {
-                return new JsonResponse(array('message' => false, 400));
+                return new JsonResponse(array('message' => $count, 200));
             }
 
 
 
-
-
         }
+
+        return new JsonResponse(array('message' => false, 400));
+
+
 
     }
 

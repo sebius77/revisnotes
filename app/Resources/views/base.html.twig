@@ -51,15 +51,16 @@
             integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+
     <script>
         var Ajouter = '{{ path('Ajouter') }}';
         var refreshList = "{{ path('refreshList') }}";
         var searchNote = "{{ path('search') }}";
         var resultSearch = "{{ path('resultSearch') }}";
+        var nbNote = "{{ path('countNote') }}";
     </script>
     <script src="{{ asset('js/searchNote.js') }}"></script>
+    <script src="{{ asset('js/countNote.js') }}"></script>
 
     {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 

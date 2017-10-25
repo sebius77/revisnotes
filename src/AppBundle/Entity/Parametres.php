@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Parametres
@@ -190,4 +192,33 @@ class Parametres
     {
         return $this->parfait;
     }
+
+
+    /**
+     * @Assert\IsTrue()
+     */
+    public function isParametresValid()
+    {
+
+        $a = $this->getRevoir();
+        $b = $this->getDifficile();
+        $c = $this->getBien();
+        $d = $this->getParfait();
+
+
+        if($a < $b)
+        {
+            if($b < $c)
+            {
+                if ($c < $d)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+
 }
