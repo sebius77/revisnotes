@@ -12,6 +12,21 @@
                 <hr>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+
+                    {{ flashMessage }}
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form(settings) }}
+            </div>
+        </div>
 
     </div>
 

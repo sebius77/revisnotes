@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,10 +17,11 @@ class ParametresType extends AbstractType
     {
         $builder
             //->add('alerte')
-            ->add('revoir')
-            ->add('difficile')
-            ->add('bien')
-            ->add('parfait')
+            ->add('revoir', IntegerType::class)
+            ->add('difficile',IntegerType::class)
+            ->add('bien', IntegerType::class)
+            ->add('parfait', IntegerType::class)
+            ->add('modifier', SubmitType::class)
         ;
     }
     
