@@ -44,7 +44,13 @@ class FooterController extends Controller
 
             $mailer->send($message);
 
-           // return $this->redirectToRoute('AppBundle:Footer:contact.html.twig');
+            $this->addFlash(
+                'notice',
+                'Votre message vient d\'être envoyé !!'
+            );
+
+
+           return $this->redirectToRoute('contact');
 
             // prévoir un message FlashBag pour l'envoi du message
         }
