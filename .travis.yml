@@ -5,4 +5,5 @@ php:
 
 script:
     - composer install
-    - ./vendor/bin/phpunit
+    - vendor/bin/phpunit --generate-configuration
+    - vendor/bin/phpunit
