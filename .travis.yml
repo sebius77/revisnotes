@@ -10,7 +10,4 @@ services:
 script:
     - composer install
     - vendor/bin/phpunit
-
-
-notifications:
-    email: gebs.dev@gmail.com
+    - vendor/bin/phpcs --standard=psr2 src/
