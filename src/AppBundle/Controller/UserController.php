@@ -28,14 +28,13 @@ class UserController extends Controller
         $form = $this->get('form.factory')->create(ParametresType::class, $settings);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($settings);
 
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice','Mise à jour des paramètres');
+            $request->getSession()->getFlashBag()->add('notice', 'Mise à jour des paramètres');
 
             return $this->redirectToRoute('settings');
         }

@@ -27,20 +27,14 @@ class FooterController extends Controller
 
         // Lorsque le formulaire est validé
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
             $message = (new \Swift_Message($form['subject']->getData()))
                 ->setFrom($form['email']->getData())
                 ->setTo('revisnotes@gmail.com')
-                ->setBody(
-                    $form['body']->getData()
-                    );
+                ->setBody($form['body']->getData());
 
             $mailer->send($message);
 
-            $this->addFlash(
-                'notice',
-                'Votre message vient d\'être envoyé !!'
-            );
+            $this->addFlash('notice','Votre message vient d\'être envoyé !!');
 
            return $this->redirectToRoute('contact');
 

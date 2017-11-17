@@ -302,7 +302,7 @@ class Categorie
         return $this->children;
     }
 
-    public function to_json_encode()
+    public function toJsonEncode()
     {
         $tab = [];
 
@@ -314,9 +314,8 @@ class Categorie
         ];
 
         if($this->getChildren() !== null) {
-            foreach($this->getChildren() as $children)
-            {
-                $tab['children'][]= $children->to_json_encode();
+            foreach ($this->getChildren() as $children) {
+                $tab['children'][]= $children->toJsonEncode();
             }
         }
         return $tab;

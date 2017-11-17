@@ -41,7 +41,6 @@ class CategorieController extends Controller
     {
 
         if ($request->isXmlHttpRequest()) {
-
             $em = $this->getDoctrine()->getManager();
 
             // récupération de la catégorie
@@ -77,7 +76,7 @@ class CategorieController extends Controller
 
             // récupération de la catégorie
             $categories = $em->getRepository('AppBundle:Categorie')
-                ->findGroupementCat($groupement,$level,$idUser);
+                ->findGroupementCat($groupement, $level, $idUser);
 
 
             foreach ($categories as $element) {

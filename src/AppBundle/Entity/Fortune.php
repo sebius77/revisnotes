@@ -62,4 +62,3 @@ class Fortune
         return $this->citation;
     }
 }
-

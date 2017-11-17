@@ -18,7 +18,7 @@ class ParametresType extends AbstractType
         $builder
             //->add('alerte')
             ->add('revoir', IntegerType::class)
-            ->add('difficile',IntegerType::class)
+            ->add('difficile', IntegerType::class)
             ->add('bien', IntegerType::class)
             ->add('parfait', IntegerType::class)
             ->add('modifier', SubmitType::class)

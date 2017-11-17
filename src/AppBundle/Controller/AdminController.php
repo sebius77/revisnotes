@@ -84,7 +84,6 @@ class AdminController extends Controller
     {
 
         if ($request->isXmlHttpRequest()) {
-
             $em = $this->getDoctrine()->getManager();
 
             // récupération de la catégorie

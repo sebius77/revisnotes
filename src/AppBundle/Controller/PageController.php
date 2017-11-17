@@ -60,7 +60,6 @@ class PageController extends Controller
 
             // On test si la catégorie est une catégorie mère (idParent null)
             if ($idParent === null || $idParent === "0") {
-
                 // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
                 $file = $_FILES['appbundle_categorie'];
 
@@ -82,11 +81,10 @@ class PageController extends Controller
                     $categorie->setImage($fileUploader->getFileName());
 
                     //return new JsonResponse(array('message' => $upload, 200));
-
-                } else if ($upload === 1) {
+                } elseif ($upload === 1) {
                     // Cas ou le type du fichier est mauvais
                     return new JsonResponse(array('message' => 1, 50));
-                } else if ($upload === 2) {
+                } elseif ($upload === 2) {
                     // Cas ou la taille du fichier est supérieur à 400Ko
                     return new JsonResponse(array('message' => 2, 60));
                 } else {
@@ -172,12 +170,9 @@ class PageController extends Controller
             foreach ($tabTest as $item ) {
                 $result[]= $item->to_json_encode();
             }
-
            // return new JsonResponse(array('listCategories' => $result, 200));
             return new JsonResponse($result);
         }
-
         return new JsonResponse(array('listCategories' => 'erreur', 400));
     }
 }
-

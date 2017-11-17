@@ -9,10 +9,10 @@ class FileUploader
     private $targetDir;
     private $filename;
 
-    CONST TAILLE_MAX_IMAGE = "400000";
+    const TAILLE_MAX_IMAGE = "400000";
 
-    CONST MAUVAIS_TYPE_IMAGE = 1;
-    CONST TAILLE_IMAGE_DEPASSEE = 2;
+    const MAUVAIS_TYPE_IMAGE = 1;
+    const TAILLE_IMAGE_DEPASSEE = 2;
 
     public function __construct($targetDir)
     {
@@ -38,7 +38,7 @@ class FileUploader
         $tmp_name = $file['tmp_name']['image'];
 
         // On récupère l'extension du fichier
-        $extension = explode('.',$file['name']['image']);
+        $extension = explode('.', $file['name']['image']);
         $extension = end($extension);
 
         // On génère un nom unique pour le fichier et on ajoute son extension

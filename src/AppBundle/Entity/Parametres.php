@@ -197,8 +197,8 @@ class Parametres
         $c = $this->getBien();
         $d = $this->getParfait();
 
-        if($a < $b) {
-            if($b < $c) {
+        if ($a < $b) {
+            if ($b < $c) {
                 if ($c < $d) {
                     return true;
                 }

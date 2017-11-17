@@ -27,7 +27,7 @@ class NoteController extends Controller
 
         // Récupération des catégories en fonction de la page et l'id utilisateur
         $listCategories = $em->getRepository('AppBundle:Categorie')
-            ->findAllUserCatTrie($page, 9,$id);
+            ->findAllUserCatTrie($page, 9, $id);
 
         // 4) La vue s'occupe de parser les catégories et afficher les catégories Mères
         return $this->render('AppBundle:Default:mesNotes.html.twig', array(
@@ -62,7 +62,7 @@ class NoteController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("edit/{id}", name="edit", requirements={"id" = "\d+"})
      */
-    public function editAction(Request $request,$id)
+    public function editAction(Request $request, $id)
     {
 
         // Vérification de l'appartenance de la note
@@ -249,7 +249,6 @@ class NoteController extends Controller
             if ($note) {
                 return new JsonResponse(array('message' => true, 200));
             }
-
         }
         return new JsonResponse(array('message' => false, 400));
     }
@@ -275,8 +274,7 @@ class NoteController extends Controller
 
             $count = count($nbNote);
 
-            if($nbNote)
-            {
+            if ($nbNote) {
                 return new JsonResponse(array('message' => $count, 200));
             }
         }

@@ -16,8 +16,8 @@ class NoteRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findLastNote($id)
     {
-        $query = $this->_em->createQuery('SELECT n FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u WHERE u.id = :id
-        AND c.aReviser = 1 AND n.dateRevision <= :now ORDER BY n.dateRevision ASC');
+        $query = $this->_em->createQuery('SELECT n FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u 
+        WHERE u.id = :id AND c.aReviser = 1 AND n.dateRevision <= :now ORDER BY n.dateRevision ASC');
         $query->setMaxResults(1);
         $query->setParameter('now', new \DateTime('now'));
         $query->setParameter('id', $id);
@@ -30,8 +30,8 @@ class NoteRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findAllNoteAreviser($id)
     {
-        $query = $this->_em->createQuery('SELECT n FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u WHERE u.id = :id
-        AND c.aReviser = 1 AND n.dateRevision <= :now ORDER BY n.dateRevision ASC');
+        $query = $this->_em->createQuery('SELECT n FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u 
+        WHERE u.id = :id AND c.aReviser = 1 AND n.dateRevision <= :now ORDER BY n.dateRevision ASC');
         $query->setParameter('now', new \DateTime('now'));
         $query->setParameter('id', $id);
 
@@ -40,8 +40,8 @@ class NoteRepository extends \Doctrine\ORM\EntityRepository
 
     public function findAllByUser($id, $term)
     {
-        $query = $this->_em->createQuery('SELECT n.id, n.titre FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u WHERE u.id = :id
-        AND n.titre LIKE :term');
+        $query = $this->_em->createQuery('SELECT n.id, n.titre FROM AppBundle:Note n JOIN n.categorie c 
+        JOIN c.user u WHERE u.id = :id AND n.titre LIKE :term');
         $query->setParameter('id', $id);
         $query->setParameter('term', '%' . $term. '%');
 
