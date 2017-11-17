@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
+    /**
+     * @dataProvider provideUrls
+     */
     public function testUrls($url)
     {
       $client = static::createClient();
