@@ -42,5 +42,4 @@ class ParametresType extends AbstractType
     {
         return 'appbundle_parametres';
     }
-
 }

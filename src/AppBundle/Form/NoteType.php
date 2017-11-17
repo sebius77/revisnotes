@@ -50,6 +50,4 @@ class NoteType extends AbstractType
     {
         return 'appbundle_note';
     }
-
-
 }

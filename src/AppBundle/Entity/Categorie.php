@@ -256,8 +256,6 @@ class Categorie
         return $this->notes;
     }
 
-  
-
     /**
      * Set idParent
      *
@@ -304,7 +302,6 @@ class Categorie
         return $this->children;
     }
 
-
     public function to_json_encode()
     {
         $tab = [];
@@ -316,18 +313,14 @@ class Categorie
             'niveau' => $this->getNiveau(),
         ];
 
-
         if($this->getChildren() !== null) {
             foreach($this->getChildren() as $children)
             {
                 $tab['children'][]= $children->to_json_encode();
             }
         }
-
         return $tab;
     }
-
-
 
     /**
      * Set user

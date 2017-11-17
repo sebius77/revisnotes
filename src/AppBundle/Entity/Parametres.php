@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * Parametres
  *
@@ -23,15 +22,12 @@ class Parametres
      */
     private $id;
 
-
-
     /**
      * @var int
      *
      * @ORM\Column(name="alerte", type="integer", nullable=true)
      */
     private $alerte;
-
 
     /**
      * @var int
@@ -60,7 +56,6 @@ class Parametres
      * @ORM\Column(name="parfait", type="integer")
      */
     private $parfait = 5;
-
 
     /**
      * Get id
@@ -95,7 +90,6 @@ class Parametres
     {
         return $this->alerte;
     }
-    
 
     /**
      * Set revoir
@@ -193,25 +187,19 @@ class Parametres
         return $this->parfait;
     }
 
-
     /**
      * @Assert\IsTrue()
      */
     public function isParametresValid()
     {
-
         $a = $this->getRevoir();
         $b = $this->getDifficile();
         $c = $this->getBien();
         $d = $this->getParfait();
 
-
-        if($a < $b)
-        {
-            if($b < $c)
-            {
-                if ($c < $d)
-                {
+        if($a < $b) {
+            if($b < $c) {
+                if ($c < $d) {
                     return true;
                 }
             }
@@ -219,6 +207,4 @@ class Parametres
 
         return false;
     }
-
-
 }

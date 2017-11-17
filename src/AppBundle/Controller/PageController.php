@@ -11,11 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-
-
 class PageController extends Controller
 {
-
 
     /**
      * @Route("ajouter", name="Ajouter")
@@ -30,19 +27,14 @@ class PageController extends Controller
         $categorie = new Categorie();
         $formCategorie = $this->get('form.factory')->create(CategorieType::class);
 
-
         // récupération de l'utilisateur courant
         $user = $this->getUser();
 
         // récupération du pseudo de l'utilisateur courant
         $username = $user->getUsername();
 
-
-
-
         // Lorsque le formulaire est validé on enregistre en base de données
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
-        {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
             $em->persist($note);
@@ -53,13 +45,8 @@ class PageController extends Controller
             return $this->redirectToRoute('Ajouter');
         }
 
-
-
-
-
         // Traitement pour l'ajout des catégories en Ajax
-        if($request->isXmlHttpRequest()) {
-
+        if ($request->isXmlHttpRequest()) {
             $formCategorie->handleRequest($request);
 
             // Pour récupérer la valeur du champ nom des catégories - OK
@@ -72,7 +59,7 @@ class PageController extends Controller
             $idParent = $formCategorie->get('idParent')->getData();
 
             // On test si la catégorie est une catégorie mère (idParent null)
-            if($idParent === null || $idParent === "0") {
+            if ($idParent === null || $idParent === "0") {
 
                 // Concernant l'image, tout d'abord on récupère le nom de l'image - OK
                 $file = $_FILES['appbundle_categorie'];
@@ -92,12 +79,9 @@ class PageController extends Controller
                 // Dans le cas ou l'upload à fonctionner
                 // On enregistre la catégorie en base de données
                 if ($upload === true) {
-
                     $categorie->setImage($fileUploader->getFileName());
 
-
                     //return new JsonResponse(array('message' => $upload, 200));
-
 
                 } else if ($upload === 1) {
                     // Cas ou le type du fichier est mauvais
@@ -109,9 +93,6 @@ class PageController extends Controller
                     // Autres cas
                     return new JsonResponse(array('message' => false, 70));
                 }
-
-
-
 
                // Si la catégorie n'est pas mère (id_parent = null)
             } else {
@@ -126,20 +107,14 @@ class PageController extends Controller
                 $catParent = $em->getRepository('AppBundle:Categorie')
                     ->find($idParent);
 
-
                 // On indique le groupement du parent
                 $groupement = $username . '_' . $catParent->getNom();
-
 
                 $categorie->setParent($catParent);
             }
 
-
-
-
             // On modifie le nom de la catégorie
             $categorie->setNom($username . '_' . $nom);
-
 
             // Il faudra prévoir une vérification si doublon et un message en conséquence.
 
@@ -158,13 +133,6 @@ class PageController extends Controller
             return new JsonResponse(array('message' => true, 200));
         }
 
-
-
-
-
-
-
-
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:ajouter.html.twig', array(
             'form' => $form->createView(),
@@ -172,21 +140,13 @@ class PageController extends Controller
         ));
     }
 
-
-
-
-
-
-
-
     /**
      * @Route("refreshList", name="refreshList")
      * Méthode permettant de rafraîchir la liste des catégories
      */
     public function refreshListAction(Request $request)
     {
-        if($request->isXmlHttpRequest()) {
-
+        if ($request->isXmlHttpRequest()) {
             $user = $this->getUser();
 
             // récupération de toutes les catégories via un repository
@@ -209,21 +169,15 @@ class PageController extends Controller
             $tabTest = $tabCategories->getCategorieWithChildren($listCategories);
 
             $result = [];
-            foreach($tabTest as $item )
-            {
+            foreach ($tabTest as $item ) {
                 $result[]= $item->to_json_encode();
             }
 
-
            // return new JsonResponse(array('listCategories' => $result, 200));
             return new JsonResponse($result);
-
         }
 
         return new JsonResponse(array('listCategories' => 'erreur', 400));
-
     }
-
-
-
 }
+

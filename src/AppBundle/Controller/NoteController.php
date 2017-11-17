@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Form\NoteType;
 use AppBundle\Form\CategorieType;
 use AppBundle\Entity\Categorie;
@@ -10,8 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
-
 
 class NoteController extends Controller
 {
@@ -26,13 +23,11 @@ class NoteController extends Controller
         $user = $this->getUser();
         $id = $user->getId();
 
-
         $em = $this->getDoctrine()->getManager();
 
         // Récupération des catégories en fonction de la page et l'id utilisateur
         $listCategories = $em->getRepository('AppBundle:Categorie')
             ->findAllUserCatTrie($page, 9,$id);
-
 
         // 4) La vue s'occupe de parser les catégories et afficher les catégories Mères
         return $this->render('AppBundle:Default:mesNotes.html.twig', array(
@@ -41,8 +36,6 @@ class NoteController extends Controller
             'nombrePage' => ceil(count($listCategories)/9)
         ));
     }
-
-
 
     /**
      * @Route("read/{id}", name="read", requirements={"id" = "\d+"})
@@ -64,7 +57,6 @@ class NoteController extends Controller
         ));
     }
 
-
     /**
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
@@ -81,31 +73,20 @@ class NoteController extends Controller
         $note = $em->getRepository('AppBundle:Note')
             ->find($id);
 
-
-
         // On récupèe l'id de la note
         $categorie = $note->getCategorie();
 
         $catId = $categorie->getId();
 
-
-
-
         $form = $this->get('form.factory')->create(NoteType::class, $note);
 
         $formCategorie = $this->get('form.factory')->create(CategorieType::class);
 
-
-
-
         // Lorsque le formulaire est validé
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
-        {
-
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
             // $categorie->addNote($note);
-
 
             $em->persist($note);
             $em->flush();
@@ -115,17 +96,12 @@ class NoteController extends Controller
             return $this->redirectToRoute('Ajouter');
         }
 
-
         return $this->render('AppBundle:Default:ajouter.html.twig', array(
             'catId' => $catId,
             'form' => $form->createView(),
             'formCategorie' => $formCategorie->createView(),
         ));
-
     }
-
-
-
 
     /**
      * @Route("deleteNote/{id}", name="deleteNote", requirements={"id" = "\d+"})
@@ -135,8 +111,7 @@ class NoteController extends Controller
 
         // Vérification de l'apartencance de la note
 
-        if($request->isXmlHttpRequest()) {
-
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
 
             // récupération de la catégorie
@@ -150,12 +125,8 @@ class NoteController extends Controller
             return new JsonResponse(array('message' => true, 200));
         }
 
-
         return new JsonResponse(array('message' => false, 400));
-
-
     }
-
 
     /**
      * @Route("aReviser", name="AReviser")
@@ -173,13 +144,10 @@ class NoteController extends Controller
         $note = $em->getRepository('AppBundle:Note')
             ->findLastNote($id);
 
-
-
         return $this->render('AppBundle:Default:aReviser.html.twig', array(
             'note' => $note,
         ));
     }
-
 
     /**
      * @param $id
@@ -197,13 +165,10 @@ class NoteController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-
         $note = $em->getRepository('AppBundle:Note')
             ->find($id);
 
-
         $today = new \DateTime();
-
 
         $parametres = $user->getParametres();
 
@@ -212,8 +177,7 @@ class NoteController extends Controller
         $bien = $parametres->getBien();
         $parfait = $parametres->getParfait();
 
-
-        switch($bouton) {
+        switch ($bouton) {
             case 'revoir':
                 $newDate = $today->add(new \DateInterval('P' . $revoir . 'D'));
                 break;
@@ -236,9 +200,7 @@ class NoteController extends Controller
 
         $em->flush();
 
-
         return $this->redirectToRoute('AReviser');
-
     }
 
     /**
@@ -249,8 +211,7 @@ class NoteController extends Controller
     public function searchAction(Request $request)
     {
 
-        if($request->isXmlHttpRequest()) {
-
+        if ($request->isXmlHttpRequest()) {
             $term = $request->get('motcle');
 
             $em = $this->getDoctrine()->getManager();
@@ -258,17 +219,13 @@ class NoteController extends Controller
             $user = $this->getUser();
             $idUser = $user->getId();
 
-
             $notesUser = $em->getRepository('AppBundle:Note')
                 ->findAllByUser($idUser, $term);
-
 
             return new JsonResponse(array('data' => $notesUser, 200));
         }
 
-
         return new JsonResponse(array('data' => false, 400));
-
     }
 
     /**
@@ -278,9 +235,7 @@ class NoteController extends Controller
     {
 
         // Lorsque le formulaire est validé
-        if($request->isXmlHttpRequest())
-        {
-
+        if ($request->isXmlHttpRequest()) {
             $id = $request->request->get('objetId');
 
             // Traitement pour voir si la note appartient bien à l'utilisateur et qu'elle existe
@@ -291,16 +246,13 @@ class NoteController extends Controller
             $note = $em->getRepository('AppBundle:Note')
                 ->find($id);
 
-
-            if ($note){
+            if ($note) {
                 return new JsonResponse(array('message' => true, 200));
             }
 
         }
         return new JsonResponse(array('message' => false, 400));
-
     }
-
 
     /**
      * @param Request $request
@@ -311,9 +263,7 @@ class NoteController extends Controller
     public function nbNoteAreviser(Request $request)
     {
 
-        if($request->isXmlHttpRequest())
-        {
-
+        if ($request->isXmlHttpRequest()) {
             $user = $this->getUser();
             $idUser = $user->getId();
 
@@ -325,22 +275,12 @@ class NoteController extends Controller
 
             $count = count($nbNote);
 
-
             if($nbNote)
             {
                 return new JsonResponse(array('message' => $count, 200));
             }
-
-
-
         }
 
         return new JsonResponse(array('message' => false, 400));
-
-
-
     }
-
-
-
 }

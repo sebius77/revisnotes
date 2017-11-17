@@ -25,7 +25,6 @@ class NoteRepository extends \Doctrine\ORM\EntityRepository
         return $query->getOneOrNullResult();
     }
 
-
     /**
      * Méthode permettant de récupérer toutes les notes à réviser
      */
@@ -39,7 +38,6 @@ class NoteRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
-
     public function findAllByUser($id, $term)
     {
         $query = $this->_em->createQuery('SELECT n.id, n.titre FROM AppBundle:Note n JOIN n.categorie c JOIN c.user u WHERE u.id = :id
@@ -48,8 +46,5 @@ class NoteRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('term', '%' . $term. '%');
 
         return $query->getResult();
-
     }
-
 }
-

@@ -18,21 +18,17 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
     public function findAllUserCatTrie($page, $nbMaxParPage, $id)
     {
 
-        if(!is_numeric($page))
-        {
+        if (!is_numeric($page)) {
             throw new InvalidArgumentException(
                 'La valeur de l\'argument $page est incorrecte (valeur : ' . $page . ').'
             );
         }
 
-        if ($page < 1)
-        {
+        if ($page < 1) {
             throw new NotFoundHttpException('La page demandée n\'existe pas');
         }
 
-
-        if(!is_numeric($nbMaxParPage))
-        {
+        if (!is_numeric($nbMaxParPage)) {
             throw new InvalidArgumentException(
                 'La valeur de l\'argument $nbMaxParPage est incorrecte (valeur : ' . $nbMaxParPage . ')'
             );
@@ -42,20 +38,16 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
         c.idParent IS NULL');
         $query->setParameter('id', $id);
 
-
         $premierResultat = ($page - 1) * $nbMaxParPage;
         $query->setFirstResult($premierResultat)->setMaxResults($nbMaxParPage);
         $paginator = new Paginator($query);
 
-        if(($paginator->count() <= $premierResultat) && $page !=1)
-        {
+        if (($paginator->count() <= $premierResultat) && $page !=1) {
             throw new NotFoundHttpException('La page demandée n\'existe pas.'); // page 404, sauf pour la
             // première page
         }
 
         return $paginator;
-
-
     }
 
     /**
@@ -74,9 +66,4 @@ class CategorieRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
-
-
-
-
-
 }

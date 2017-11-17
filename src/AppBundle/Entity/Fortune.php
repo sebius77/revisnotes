@@ -28,7 +28,6 @@ class Fortune
      */
     private $citation;
 
-
     /**
      * Get id
      *

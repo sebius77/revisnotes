@@ -2,14 +2,11 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Entity\Parametres;
 use AppBundle\Form\ParametresType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-
-
 
 class UserController extends Controller
 {
@@ -30,10 +27,7 @@ class UserController extends Controller
 
         $form = $this->get('form.factory')->create(ParametresType::class, $settings);
 
-
-
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
-        {
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
 
@@ -41,24 +35,13 @@ class UserController extends Controller
 
             $em->flush();
 
-
             $request->getSession()->getFlashBag()->add('notice','Mise à jour des paramètres');
 
             return $this->redirectToRoute('settings');
-
-
-
         }
-
-
-
 
         return $this->render('AppBundle:User:settings.html.twig', array(
             'settings' => $form->createView(),
         ));
-
-
     }
-
-
 }
