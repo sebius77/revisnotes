@@ -18,16 +18,16 @@ class NoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre',TextType::class)
-            ->add('enonce',TextareaType::class)
-            ->add('solution',TextareaType::class)
-            ->add('categorie',EntityType::class, array(
+            ->add('titre', TextType::class)
+            ->add('enonce', TextareaType::class)
+            ->add('solution', TextareaType::class)
+            ->add('categorie', EntityType::class, array(
                 'class'    => 'AppBundle:Categorie',
                 'choice_label'     => 'nom',
                 'multiple'  => false,
                 'placeholder' => 'Choisissez une catégorie'
             ))
-            ->add('Ajouter',SubmitType::class)
+            ->add('Ajouter', SubmitType::class)
             ;
     }
     

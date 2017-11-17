@@ -313,7 +313,7 @@ class Categorie
             'niveau' => $this->getNiveau(),
         ];
 
-        if($this->getChildren() !== null) {
+        if ($this->getChildren() !== null) {
             foreach ($this->getChildren() as $children) {
                 $tab['children'][]= $children->toJsonEncode();
             }

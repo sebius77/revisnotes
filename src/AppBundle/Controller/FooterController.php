@@ -34,9 +34,9 @@ class FooterController extends Controller
 
             $mailer->send($message);
 
-            $this->addFlash('notice','Votre message vient d\'être envoyé !!');
+            $this->addFlash('notice', 'Votre message vient d\'être envoyé !!');
 
-           return $this->redirectToRoute('contact');
+            return $this->redirectToRoute('contact');
 
             // prévoir un message FlashBag pour l'envoi du message
         }

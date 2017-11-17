@@ -167,9 +167,10 @@ class PageController extends Controller
             $tabTest = $tabCategories->getCategorieWithChildren($listCategories);
 
             $result = [];
-            foreach ($tabTest as $item ) {
-                $result[]= $item->to_json_encode();
+            foreach ($tabTest as $item) {
+                $result[]= $item->toJsonEncode();
             }
+
            // return new JsonResponse(array('listCategories' => $result, 200));
             return new JsonResponse($result);
         }
