@@ -18,6 +18,9 @@ class FooterController extends Controller
 
 
     /**
+     * @param Request $request
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("contact", name="contact")
      * Méthode permettant l'accès au formulaire de contact
      * et l'envoi d'un message
@@ -36,7 +39,7 @@ class FooterController extends Controller
 
             $message = (new \Swift_Message($form['subject']->getData()))
                 ->setFrom($form['email']->getData())
-                ->setTo('sebgaudin@yahoo.fr')
+                ->setTo('revisnotes@gmail.com')
                 ->setBody(
                     $form['body']->getData()
                     );
