@@ -79,7 +79,6 @@ class PageController extends Controller
                 // On enregistre la catégorie en base de données
                 if ($upload === true) {
                     $categorie->setImage($fileUploader->getFileName());
-
                 } elseif ($upload === 1) {
                     // Cas ou le type du fichier est mauvais
                     return new JsonResponse(array('message' => 1, 50));
