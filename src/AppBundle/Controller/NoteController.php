@@ -259,7 +259,7 @@ class NoteController extends Controller
      * @Route("countNote", name="countNote")
      * Méthode permettant de récupérer le nombre de note à réviser
      */
-    public function nbNoteAreviser(Request $request)
+    public function nbNoteAreviserAction(Request $request)
     {
 
         if ($request->isXmlHttpRequest()) {
