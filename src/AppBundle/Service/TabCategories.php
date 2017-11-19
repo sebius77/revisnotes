@@ -31,7 +31,7 @@ class TabCategories
         foreach ($listCategories as $index => $cat) {
             // Si la catégorie à un id parent, cela signifie qu'elle
             // est enfant d'une catégorie
-            if ($cat->getIdParent() != null) {
+            if ($cat->getIdParent() !== null) {
                 $categories_id[$cat->getIdParent()]->setChildren($cat);
                 unset($listCategories[$index]);
             }

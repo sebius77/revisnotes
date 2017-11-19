@@ -17,7 +17,5 @@
 /vendor/
 /web/bundles/
 /web/config.php
-.idea/modules.xml
-.idea/revisnotes.iml
-.idea/workspace.xml
+.idea/
 composer.phar

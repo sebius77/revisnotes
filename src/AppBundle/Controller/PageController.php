@@ -80,7 +80,6 @@ class PageController extends Controller
                 if ($upload === true) {
                     $categorie->setImage($fileUploader->getFileName());
 
-                    //return new JsonResponse(array('message' => $upload, 200));
                 } elseif ($upload === 1) {
                     // Cas ou le type du fichier est mauvais
                     return new JsonResponse(array('message' => 1, 50));
@@ -127,7 +126,6 @@ class PageController extends Controller
             $em->persist($categorie);
             $em->flush();
 
-            //return new JsonResponse(array('message' => $upload, 200));
             return new JsonResponse(array('message' => true, 200));
         }
 
@@ -147,12 +145,7 @@ class PageController extends Controller
         if ($request->isXmlHttpRequest()) {
             $user = $this->getUser();
 
-            // récupération de toutes les catégories via un repository
-            //$repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:Categorie');
-
             // On récupère toutes les catégories
-            //$listCategories = $repository->findAll();
-            //$listCategories = $repository->findAllUserCat($user);
             $listCategories = $user->getCategories();
 
             // Ensuite nous allons parser les catégories via un service
@@ -171,7 +164,6 @@ class PageController extends Controller
                 $result[]= $item->toJsonEncode();
             }
 
-           // return new JsonResponse(array('listCategories' => $result, 200));
             return new JsonResponse($result);
         }
         return new JsonResponse(array('listCategories' => 'erreur', 400));

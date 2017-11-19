@@ -26,8 +26,6 @@ class CategorieController extends Controller
         $categorie = $em->getRepository('AppBundle:Categorie')
             ->find($id);
 
-       // $notes = $categorie->getNotes();
-
         // replace this example code with whatever you need
         return $this->render('AppBundle:Default:categorie.html.twig', array(
             'categorie' => $categorie,

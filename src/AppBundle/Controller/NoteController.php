@@ -86,8 +86,6 @@ class NoteController extends Controller
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            // $categorie->addNote($note);
-
             $em->persist($note);
             $em->flush();
 
@@ -159,7 +157,6 @@ class NoteController extends Controller
     public function autoEvalAction($id, $bouton)
     {
         $user = $this->getUser();
-        $idUser = $user->getId();
 
         // Prévoir un contrôle sur l'idUser
 
