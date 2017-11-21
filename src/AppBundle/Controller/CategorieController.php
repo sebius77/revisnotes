@@ -33,7 +33,11 @@ class CategorieController extends Controller
     }
 
     /**
-     * @Route("deleteCat/{id}", name="deleteCat", requirements={"id" = "\d+"})
+     * @Route("deleteCat/{id}",
+     *      name="deleteCat",
+     *      options = { "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function deleteAction(Request $request, $id)
     {
@@ -56,7 +60,11 @@ class CategorieController extends Controller
     }
 
     /**
-     * @Route("enableCat/{id}", name="enableCat", requirements={"id" = "\d+"})
+     * @Route("enableCat/{id}",
+     *      name="enableCat",
+     *      options ={ "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function enableCatAction(Request $request, $id)
     {
@@ -91,7 +99,11 @@ class CategorieController extends Controller
     }
 
     /**
-     * @Route("disableCat/{id}", name="disableCat", requirements={"id" = "\d+"})
+     * @Route("disableCat/{id}",
+     *      name="disableCat",
+     *      options ={ "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function disableCatAction(Request $request, $id)
     {

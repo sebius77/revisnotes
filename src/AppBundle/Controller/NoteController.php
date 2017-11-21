@@ -38,7 +38,11 @@ class NoteController extends Controller
     }
 
     /**
-     * @Route("read/{id}", name="read", requirements={"id" = "\d+"})
+     * @Route("read/{id}",
+     *      name="read",
+     *      options ={ "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      * Méthode permettant l'affichage d'une note
      */
     public function readAction($id)
@@ -102,7 +106,11 @@ class NoteController extends Controller
     }
 
     /**
-     * @Route("deleteNote/{id}", name="deleteNote", requirements={"id" = "\d+"})
+     * @Route("deleteNote/{id}",
+     *      name="deleteNote",
+     *      options = { "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function deleteAction(Request $request, $id)
     {

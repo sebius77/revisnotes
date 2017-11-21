@@ -7,7 +7,8 @@ $(':checkbox').click(function() {
 
       if($(this).is(':checked'))
       {
-          var enable = "http://localhost/revisnotes/web/app_dev.php/enableCat/" + $(this).val();
+          //var enable = "http://localhost/revisnotes/web/app_dev.php/enableCat/" + $(this).val();
+          var enable = Routing.generate('enableCat', { id: $(this).val() });
           console.log('mise à jour ' + $(this).val());
           $.get(enable , function(reponse) {
 
@@ -22,7 +23,8 @@ $(':checkbox').click(function() {
           })
 
       } else {
-          var disable = "http://localhost/revisnotes/web/app_dev.php/disableCat/" + $(this).val();
+          //var disable = "http://localhost/revisnotes/web/app_dev.php/disableCat/" + $(this).val();
+          var disable = Routing.generate('disableCat', { id: $(this).val() });
           console.log('retrait ' + $(this).val());
           $.get(disable , function(reponse) {
 

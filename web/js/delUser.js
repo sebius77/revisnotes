@@ -4,7 +4,8 @@
 $('#delButtonUser').click(function() {
 
 
-    var deleteUser = "http://localhost/revisnotes/web/app_dev.php/admin/deleteUser/" + $(this).val();
+    //var deleteUser = "http://localhost/revisnotes/web/app_dev.php/admin/deleteUser/" + $(this).val();
+    var deleteUser = Routing.generate('deleteUser', { id: $(this).val() });
 
 
     $.get(deleteUser , function(reponse){

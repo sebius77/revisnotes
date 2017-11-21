@@ -3,8 +3,7 @@
 // Dans le cas ou l'on clique sur le bouton d'ajout en Bdd, on exécute une requête Ajax.
 $(':button').click(function() {
 
-
-    var deleteNote = "http://localhost/revisnotes/web/app_dev.php/deleteCat/" + $(this).val();
+    var deleteNote = Routing.generate('deleteCat', { id: $(this).val() });
 
     $.get(deleteNote , function(reponse){
 

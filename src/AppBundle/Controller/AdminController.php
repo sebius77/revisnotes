@@ -53,7 +53,10 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("admin/enableUser/{id}", name="enableUser", requirements={"id" = "\d+"})
+     * @Route("admin/enableUser/{id}",
+     *      name="enableUser",
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function enableAction(Request $request, $id)
     {
@@ -78,7 +81,11 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("admin/deleteUser/{id}", name="deleteUser", requirements={"id" = "\d+"})
+     * @Route("admin/deleteUser/{id}",
+     *      name="deleteUser",
+     *      options ={ "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function deleteAction(Request $request, $id)
     {
