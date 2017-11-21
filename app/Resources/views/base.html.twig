@@ -52,6 +52,8 @@
             crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script>
         var Ajouter = '{{ path('Ajouter') }}';
         var refreshList = "{{ path('refreshList') }}";
@@ -59,8 +61,10 @@
         var resultSearch = "{{ path('resultSearch') }}";
         var nbNote = "{{ path('countNote') }}";
     </script>
-    <script src="{{ asset('js/countNote.js') }}"></script>
-    <script src="{{ asset('js/searchNote.js') }}"></script>
+    {% if is_granted("IS_AUTHENTICATED_FULLY")  %}
+        <script src="{{ asset('js/countNote.js') }}"></script>
+        <script src="{{ asset('js/searchNote.js') }}"></script>
+    {% endif %}
     
     {{ tinymce_init({'theme': {'simple': {'menubar': false}}}) }}
 

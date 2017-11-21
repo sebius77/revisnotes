@@ -1,25 +1,19 @@
 <?php
 // src/AppBundle/Service/LevelCategorie.php
 
-
 namespace AppBundle\Service;
 
-
 use AppBundle\Entity\Categorie;
-
-
 
 class LevelCategorie
 {
 
     private $em;
 
-
     public function __construct(\Doctrine\ORM\EntityManager $em)
     {
         $this->em = $em;
     }
-
 
     /**
      * @param $idParent
@@ -32,8 +26,7 @@ class LevelCategorie
         $levelCatParent = null;
 
         // On vérifie si la catégorie en question est fille d'une autre catégorie
-        if($idParent !== null)
-        {
+        if ($idParent !== null) {
             // On récupère le repository de l'entité catégorie
             $repository = $this->getEm()->getRepository('AppBundle:Categorie');
 
@@ -47,17 +40,10 @@ class LevelCategorie
         $levelCat = $level + $levelCatParent;
 
         return($levelCat);
-
     }
-
 
     public function getEm()
     {
         return $this->em;
     }
-
-
-
-
-
 }

@@ -2,10 +2,6 @@
 
 $(document).ready(function() {
 
-
-    //console.log('test de fonctionnement');
-
-
     $("#rechercheNote").autocomplete({
         source: function(requete, reponse) {
         var motcle = $("#rechercheNote").val();
@@ -34,10 +30,6 @@ $(document).ready(function() {
 
     });
 
-
-
-
-
     $("#searchButton").click(function(e) {
         e.preventDefault();
 
@@ -49,9 +41,9 @@ $(document).ready(function() {
             //console.log(reponse);
             if(reponse.message === true)
             {
-                $(window.location = "http://localhost/revisnotes/web/app_dev.php/read/" + id);
+                //$(window.location = "http://localhost/revisnotes/web/app_dev.php/read/" + id);
+                $(window.location = Routing.generate('read', { id: id }));
             }
         })
     });
-
 });

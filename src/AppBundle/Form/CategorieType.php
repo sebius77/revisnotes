@@ -19,13 +19,11 @@ class CategorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom'                     ,TextType::class)
-            ->add('image',                  FileType::class)
-            ->add('idParent',               HiddenType::class)
-            ->add('description',            TextareaType::class, array(
-                'required' => false,
-            ))
-            ->add('Ajout',                  SubmitType::class)
+            ->add('nom', TextType::class)
+            ->add('image', FileType::class)
+            ->add('idParent', HiddenType::class)
+            ->add('description', TextareaType::class, array('required' => false,))
+            ->add('Ajout', SubmitType::class)
         ;
     }
     
@@ -46,6 +44,4 @@ class CategorieType extends AbstractType
     {
         return 'appbundle_categorie';
     }
-
-
 }

@@ -3,9 +3,13 @@
 // Dans le cas ou l'on clique sur le bouton d'ajout en Bdd, on exécute une requête Ajax.
 $(':button').click(function() {
 
+<<<<<<< HEAD
 
     var deleteNote = "http://sebastiengaudin.alwaysdata.net/deleteCat/" + $(this).val();
     //console.log($(this).val());
+=======
+    var deleteNote = Routing.generate('deleteCat', { id: $(this).val() });
+>>>>>>> 6048920b6a9909527db53d02d64d43c6c5095d94
 
     $.get(deleteNote , function(reponse){
 

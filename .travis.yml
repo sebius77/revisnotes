@@ -1,0 +1,13 @@
+language: php
+php:
+    - '7.1'
+
+services:
+    - mysql
+
+
+# Run script
+script:
+    - composer install
+    - vendor/bin/phpunit
+    - vendor/bin/phpcs --standard=psr2 src/

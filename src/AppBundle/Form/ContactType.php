@@ -25,7 +25,6 @@ class ContactType extends AbstractType
         $builder->add('envoyer', SubmitType::class);
     }
 
-
     /**
      * {@inheritdoc}
      */

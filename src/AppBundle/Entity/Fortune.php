@@ -28,7 +28,6 @@ class Fortune
      */
     private $citation;
 
-
     /**
      * Get id
      *
@@ -63,4 +62,3 @@ class Fortune
         return $this->citation;
     }
 }
-

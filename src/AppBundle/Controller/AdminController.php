@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,9 +25,7 @@ class AdminController extends Controller
         return $this->render('AppBundle:Admin:admin.html.twig', array(
             'users' => $users,
         ));
-
     }
-
 
     /**
      * @Route("admin/blockUser/{id}", name="blockUser", requirements={"id" = "\d+"})
@@ -42,7 +39,6 @@ class AdminController extends Controller
         $user = $em->getRepository('GebsUserBundle:User')
             ->find($id);
 
-
             $user->setEnabled(false);
             $em->persist($user);
 
@@ -54,13 +50,13 @@ class AdminController extends Controller
             );
 
             return $this->redirectToRoute('adminUsers');
-
-
-
     }
 
     /**
-     * @Route("admin/enableUser/{id}", name="enableUser", requirements={"id" = "\d+"})
+     * @Route("admin/enableUser/{id}",
+     *      name="enableUser",
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function enableAction(Request $request, $id)
     {
@@ -70,7 +66,6 @@ class AdminController extends Controller
         // On effectue une requête pour récupérer le User
         $user = $em->getRepository('GebsUserBundle:User')
             ->find($id);
-
 
         $user->setEnabled(true);
         $em->persist($user);
@@ -83,19 +78,19 @@ class AdminController extends Controller
         );
 
         return $this->redirectToRoute('adminUsers');
-
     }
 
-
     /**
-     * @Route("admin/deleteUser/{id}", name="deleteUser", requirements={"id" = "\d+"})
+     * @Route("admin/deleteUser/{id}",
+     *      name="deleteUser",
+     *      options ={ "expose" = true },
+     *      requirements={"id" = "\d+"}
+     *     )
      */
     public function deleteAction(Request $request, $id)
     {
 
-
-        if($request->isXmlHttpRequest()) {
-
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
 
             // récupération de la catégorie
@@ -109,11 +104,6 @@ class AdminController extends Controller
             return new JsonResponse(array('message' => true, 200));
         }
 
-
         return new JsonResponse(array('message' => false, 400));
-
-
     }
-
-
 }
