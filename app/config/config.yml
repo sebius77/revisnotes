@@ -78,16 +78,16 @@ fos_user:
     firewall_name: main # Le nom du firewall derrière lequel on utilisera ces utilisateurs
     user_class: Gebs\UserBundle\Entity\User # La classe de l'entité User que nous utilisons
     from_email:
-        address: "revisnotes@gmail.com"
+        address: "%mailer_user%"
         sender_name: "revisnotes"
     registration:
         confirmation:
             enabled: true
             from_email:
-                address: "revisnotes@gmail.com"
+                address: "%mailer_user%"
                 sender_name: "revisnotes"
     resetting:
         email:
             from_email:
-                 address: "revisnotes@gmail.com"
+                 address: "%mailer_user%"
                  sender_name: "revisnotes"
