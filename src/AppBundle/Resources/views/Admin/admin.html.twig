@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true"
-                                                id="delButtonUser" value="{{ user.id }}">Oui</button>
+                                                id="delUser" value="{{ user.id }}">Oui</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,5 +85,4 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/delUser.js') }}"></script>
-
 {% endblock %}
