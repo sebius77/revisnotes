@@ -9,5 +9,6 @@ services:
 # Run script
 script:
     - composer install
+    - composer update
     - vendor/bin/phpunit
     - vendor/bin/phpcs --standard=psr2 src/
